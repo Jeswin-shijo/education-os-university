@@ -1,0 +1,372 @@
+.hero {
+  background: var(--pink-bg);
+}
+
+.hero__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 19px;
+  padding: 32px 38px 72px 32px;
+}
+
+.hero__main {
+  flex: 0 1 751px;
+  min-width: 0;
+  padding-top: 12px;
+}
+
+.hero__title {
+  max-width: 700px;
+  padding-left: 1px;
+  font-family: var(--font-inter);
+  font-size: 29px;
+  font-weight: 700;
+  line-height: 34px;
+  letter-spacing: -0.05px;
+  color: #000;
+}
+
+.hero__title span {
+  color: #9b0a2a;
+}
+
+.hero__campus {
+  margin-top: 22px;
+  padding-left: 1px;
+  font-size: 17.4px;
+  line-height: 24px;
+  color: #4a4a4a;
+  letter-spacing: -0.1px;
+}
+
+.hero__divider {
+  margin: 0 6px;
+  color: #222;
+}
+
+.hero__campus strong {
+  font-weight: 600;
+  color: #8f0a27;
+}
+
+/* Achiever carousel */
+.achievers {
+  position: relative;
+  margin-top: 25px;
+  height: 245px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #ffe866 0%, #fee03c 45%, #fdda0e 100%);
+  box-shadow: 0 10px 24px rgba(200, 160, 0, 0.18);
+}
+
+.achievers__track {
+  display: flex;
+  justify-content: center;
+  gap: 82px;
+  padding-top: 24px;
+}
+
+.achiever-card {
+  margin: 0;
+  width: 161px;
+  height: 197px;
+  border-radius: 9px;
+  overflow: hidden;
+  box-shadow: 0 5px 12px rgba(140, 100, 0, 0.28);
+  animation: card-in 0.35s ease;
+}
+
+.achiever-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0.4;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.achievers__arrow {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  background: radial-gradient(circle at 50% 45%, #a4092e 0%, #8a0220 70%);
+  box-shadow: 0 4px 10px rgba(120, 0, 25, 0.35);
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease;
+}
+
+.achievers__arrow:hover {
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.achievers__arrow--prev {
+  left: 0;
+}
+
+.achievers__arrow--next {
+  left: 100%;
+}
+
+/* Admission form */
+.admission {
+  flex: 0 0 526px;
+  min-height: 409px;
+  padding: 5px 7px 16px 7px;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.admission__head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 24px;
+  font-size: 14.7px;
+  font-weight: 700;
+  color: #000;
+}
+
+.admission__year {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.admission__year select {
+  appearance: none;
+  height: 22px;
+  padding: 0 26px 0 12px;
+  border: 1.3px solid #222;
+  border-radius: 12px;
+  background: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.admission__year svg {
+  position: absolute;
+  right: 10px;
+  color: #a00026;
+  pointer-events: none;
+}
+
+.admission__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 15px;
+  margin-top: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.field__label {
+  height: 17px;
+  padding-left: 1px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #000;
+}
+
+.field__label em {
+  font-style: normal;
+  color: #c8102e;
+  margin-left: 2px;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  height: 43px;
+  padding: 0 15px;
+  border: 1.5px solid #858585;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 15.5px;
+  color: #111;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.field select {
+  padding: 0 8px 0 3px;
+  font-size: 14.5px;
+  cursor: pointer;
+}
+
+.field input::placeholder {
+  color: #737373;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: var(--maroon);
+}
+
+.admission__city {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 37px;
+  margin-top: 23px;
+  border: 1px solid #e3e3e3;
+  border-radius: 6px;
+  background: #fafafa;
+}
+
+.admission__city-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #222;
+}
+
+.admission__city a {
+  margin-left: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #8f0a27;
+  text-decoration: underline;
+}
+
+.admission__submit {
+  width: 100%;
+  height: 44px;
+  margin-top: 10px;
+  border-radius: 4px;
+  background: var(--maroon);
+  color: #fff;
+  font-size: 14.5px;
+  font-weight: 700;
+  transition: background-color 0.2s ease;
+}
+
+.admission__submit:hover {
+  background: #86001f;
+}
+
+/* Stats strip */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 21px;
+  margin-top: -28px;
+  padding: 0 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0 1 271px;
+  height: 90px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card__value {
+  font-size: 29px;
+  font-weight: 800;
+  line-height: 1;
+  color: #a0102e;
+  letter-spacing: -0.3px;
+}
+
+.stat-card__label {
+  margin-top: 11px;
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1;
+  color: #a0102e;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+@media (max-width: 1180px) {
+  .hero__inner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 28px 24px 64px;
+  }
+
+  .hero__main,
+  .admission {
+    flex: none;
+  }
+
+  .admission {
+    min-height: 0;
+    padding: 14px 16px 18px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero__inner {
+    padding: 24px 16px 60px;
+  }
+
+  .hero__title {
+    font-size: 23px;
+    line-height: 29px;
+  }
+
+  .hero__campus {
+    font-size: 16px;
+  }
+
+  .achievers {
+    height: auto;
+    padding-bottom: 24px;
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  .achievers__track {
+    gap: 12px;
+    padding: 24px 28px 0;
+    overflow: hidden;
+  }
+
+  .achiever-card {
+    flex: 0 0 161px;
+  }
+
+  .achiever-card:not(:first-child) {
+    display: none;
+  }
+
+  .admission__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .stat-card {
+    flex: 1 1 calc(50% - 12px);
+  }
+}

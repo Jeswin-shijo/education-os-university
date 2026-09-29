@@ -1,0 +1,128 @@
+:root {
+  --navy-900: #021c4f;
+  --navy-700: #0b2a5b;
+  --royal: #264796;
+  --btn-blue: #23409a;
+  --yellow: #f9e000;
+  --brand-yellow: #f4ea2a;
+  --maroon: #a00026;
+  --maroon-dark: #8a0220;
+  --pink-bg: #ffe8f0;
+  --cream-bg: #fef6df;
+  --text: #1b1b1b;
+
+  --font-inter: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-roboto: 'Roboto', system-ui, sans-serif;
+  --font-poppins: 'Poppins', system-ui, sans-serif;
+  --font-oxygen: 'Oxygen', system-ui, sans-serif;
+  --font-lato: 'Lato', system-ui, sans-serif;
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-source: 'Source Sans 3', system-ui, sans-serif;
+  --font-carlito: 'Carlito', Calibri, 'Segoe UI', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: var(--font-inter);
+  color: var(--text);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  background: none;
+  padding: 0;
+}
+
+.page {
+  max-width: 1366px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Shared pill button (READ MORE etc.) */
+.pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 20px;
+  border-radius: 999px;
+  background: var(--btn-blue);
+  color: #fff;
+  font-family: var(--font-inter);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.pill-btn svg {
+  flex-shrink: 0;
+}
+
+.pill-btn:hover {
+  background: #1a3180;
+  transform: translateY(-1px);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

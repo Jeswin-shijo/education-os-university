@@ -1,0 +1,127 @@
+.academics {
+  padding: 30px 51px 0 50px;
+}
+
+.academics__title {
+  font-family: var(--font-roboto);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 48px;
+  letter-spacing: 0.4px;
+  text-align: center;
+  color: #0e2350;
+}
+
+.academics__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 400px));
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.program-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.program-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 400 / 344;
+  object-fit: cover;
+}
+
+.program-card .pill-btn {
+  margin-top: 27px;
+  width: 147px;
+}
+
+/* Placement banner */
+.placement {
+  display: flex;
+  height: 475px;
+  margin-top: 60px;
+  padding: 0 34px 0 36px;
+}
+
+.placement__media {
+  flex: 0 0 761px;
+  overflow: hidden;
+}
+
+.placement__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placement__panel {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 29px;
+  background: linear-gradient(180deg, #fef8de 0%, #fff1bd 22%, #fcea89 50%, #fedd37 78%, #fddb1c 100%);
+}
+
+.placement__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-roboto);
+  font-size: 49px;
+  font-weight: 400;
+  line-height: 55px;
+  letter-spacing: -0.6px;
+  color: #2a4494;
+  text-align: center;
+}
+
+.placement__panel .pill-btn {
+  margin-top: 44px;
+  width: 147px;
+}
+
+@media (max-width: 1100px) {
+  .academics {
+    padding: 40px 24px 0;
+  }
+
+  .academics__grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px 24px;
+  }
+
+  .placement {
+    flex-direction: column;
+    height: auto;
+    padding: 0 24px;
+  }
+
+  .placement__media {
+    flex: none;
+    aspect-ratio: 761 / 475;
+  }
+
+  .placement__panel {
+    padding: 56px 24px;
+  }
+}
+
+@media (max-width: 760px) {
+  .academics__title {
+    font-size: 32px;
+  }
+
+  .placement {
+    padding: 0 16px;
+  }
+
+  .placement__title {
+    font-size: 36px;
+    line-height: 42px;
+  }
+}
