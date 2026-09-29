@@ -1,6 +1,7 @@
-import { useState, type ComponentType } from 'react'
+import { useState, type ComponentType, type CSSProperties } from 'react'
 import { ArrowRight, Cpu, Lightbulb, Users } from 'lucide-react'
 import { campusLife, images, type CampusLifeKey } from '../data/siteData'
+import { stagger, useScrollReveal } from '../hooks/useScrollReveal'
 import { RunnerIcon } from './BrandIcons'
 import './CampusLife.css'
 
@@ -13,28 +14,44 @@ const icons: Record<CampusLifeKey, ComponentType<{ size?: number; strokeWidth?: 
 
 export default function CampusLife() {
   const [active, setActive] = useState<CampusLifeKey>('tech')
+  const ref = useScrollReveal<HTMLElement>()
 
   return (
-    <section className="campus-life">
+    <section ref={ref} className="campus-life">
       <div className="campus-life__inner page">
-        <img src={images.campusDecoLeft} alt="" className="campus-life__deco campus-life__deco--left" />
-        <img src={images.campusDecoRight} alt="" className="campus-life__deco campus-life__deco--right" />
+        <img
+          src={images.campusDecoLeft}
+          alt=""
+          className="campus-life__deco campus-life__deco--left"
+          data-reveal="left"
+        />
+        <img
+          src={images.campusDecoRight}
+          alt=""
+          className="campus-life__deco campus-life__deco--right"
+          data-reveal="right"
+        />
 
-        <p className="campus-life__eyebrow">BEYOND ACADEMICS</p>
-        <h2 className="campus-life__title">
-          Campus <span>Life</span>
+        <p className="campus-life__eyebrow" data-reveal="eyebrow">
+          BEYOND ACADEMICS
+        </p>
+        <h2 className="campus-life__title" data-reveal="words">
+          <span className="campus-life__word">Campus</span>{' '}
+          <span className="campus-life__word campus-life__word--accent">Life</span>
         </h2>
-        <p className="campus-life__subtitle">
+        <p className="campus-life__subtitle" data-reveal="up" style={{ '--delay': '350ms' } as CSSProperties}>
           Explore, Engage, Grow – A Vibrant Campus Experience
         </p>
 
         <div className="campus-tabs" role="tablist" aria-label="Campus life categories">
-          {campusLife.map((item) => {
+          {campusLife.map((item, i) => {
             const Icon = icons[item.key]
             const isActive = item.key === active
             return (
               <button
                 key={item.key}
+                data-reveal="up"
+                style={stagger(i)}
                 type="button"
                 role="tab"
                 aria-selected={isActive}
@@ -49,11 +66,13 @@ export default function CampusLife() {
         </div>
 
         <div className="campus-cards">
-          {campusLife.map((item) => {
+          {campusLife.map((item, i) => {
             const Icon = icons[item.key]
             return (
               <a
                 key={item.key}
+                data-reveal="card"
+                style={stagger(i)}
                 href="#"
                 className={`campus-card campus-card--${item.key}${item.key === active ? ' is-active' : ''}`}
               >

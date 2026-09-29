@@ -3,39 +3,275 @@
 }
 
 .academics__title {
-  font-family: var(--font-roboto);
   font-size: 40px;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 48px;
   letter-spacing: 0.4px;
   text-align: center;
   color: #0e2350;
+  /* masks the letters while they rise into place */
+  overflow: hidden;
+}
+
+.academics__letter {
+  display: inline-block;
 }
 
 .academics__grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 400px));
-  justify-content: space-between;
-  gap: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 48px 32px;
   margin-top: 32px;
 }
 
 .program-card {
+  --card-delay: calc(var(--i, 0) * 140ms);
+  flex: 0 1 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transform-origin: 50% 100%;
 }
 
-.program-card img {
+.program-card__media {
+  position: relative;
   width: 100%;
-  height: auto;
   aspect-ratio: 400 / 344;
+  overflow: hidden;
+  container-type: inline-size;
+  transition:
+    transform 0.5s var(--ease-out),
+    box-shadow 0.5s var(--ease-out);
+}
+
+.program-card__media img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  transition: scale 0.8s var(--ease-out);
+}
+
+/* Banner heading, sized in container units so it scales with the card on every breakpoint.
+   On the engineering photo it sits in the poster's blank navy panel. */
+.program-card__banner {
+  position: absolute;
+  z-index: 2;
+  top: 2cqw;
+  left: 56.5%;
+  display: flex;
+  flex-direction: column;
+  font-size: 4cqw;
+  font-weight: 700;
+  line-height: 5.3cqw;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* The poster title must zoom with its photo to stay inside the poster panel. The origin is
+   the photo's centre (50%, 43cqw) expressed from the banner's own top-left (56.5%, 2cqw). */
+.program-card__media--poster .program-card__banner {
+  transform-origin: -6.5cqw 41cqw;
+  transition: scale 0.8s var(--ease-out);
+}
+
+/* Illustrated banner for schools without a photo, echoing the navy poster in the engineering photo */
+.program-card__media--art {
+  background:
+    radial-gradient(circle at 74% 64%, rgba(255, 255, 255, 0.1) 0 19%, transparent 19.3%),
+    radial-gradient(circle at 74% 64%, transparent 0 27%, rgba(255, 255, 255, 0.12) 27.2% 27.6%, transparent 27.9%),
+    radial-gradient(circle at 74% 64%, transparent 0 36%, rgba(255, 255, 255, 0.07) 36.2% 36.5%, transparent 36.8%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 22px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 22px),
+    linear-gradient(155deg, #24518f 0%, #153b75 48%, #0b2553 100%);
+}
+
+/* Ripple ring behind the icon */
+.program-card__media--art::before {
+  content: '';
+  position: absolute;
+  left: 74%;
+  top: 64%;
+  width: 44cqw;
+  height: 44cqw;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Drop-in photo without a poster panel: darken the top-left so the heading stays legible */
+.program-card__media--photo::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(8, 26, 72, 0.88) 0%, rgba(8, 26, 72, 0.5) 34%, rgba(8, 26, 72, 0) 62%);
+  pointer-events: none;
+}
+
+.program-card__media--art .program-card__banner,
+.program-card__media--photo .program-card__banner {
+  top: 9cqw;
+  left: 8cqw;
+  font-size: 6cqw;
+  line-height: 7.4cqw;
+}
+
+.program-card__media--art .program-card__banner::after,
+.program-card__media--photo .program-card__banner::after {
+  content: '';
+  width: 12cqw;
+  height: 0.9cqw;
+  margin-top: 3cqw;
+  border-radius: 1cqw;
+  background: #f2b81b;
+  transform-origin: left;
+}
+
+.program-card__icon {
+  position: absolute;
+  left: 74%;
+  top: 64%;
+  width: 28cqw;
+  height: 28cqw;
+  color: rgba(255, 255, 255, 0.92);
+  transform: translate(-50%, -50%);
+  transition: transform 0.6s var(--ease-back);
+}
+
+.program-card__name {
+  margin: 20px 0 16px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0.4px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #0e2350;
 }
 
 .program-card .pill-btn {
-  margin-top: 27px;
+  margin-top: auto;
   width: 147px;
+}
+
+/* Hover */
+.program-card:hover .program-card__media {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px rgba(14, 35, 80, 0.22);
+}
+
+.program-card:hover .program-card__media img,
+.program-card:hover .program-card__media--poster .program-card__banner {
+  scale: 1.07;
+}
+
+.program-card:hover .program-card__icon {
+  transform: translate(-50%, -50%) scale(1.08) rotate(-6deg);
+}
+
+.program-card:hover .program-card__media--art::before {
+  animation: program-ripple 1.8s ease-out infinite;
+}
+
+/* ---------- Academics scroll animation ----------
+   1. heading letters rise out of a mask one by one
+   2. each card stands up (3D) with its column's stagger
+   3. the card art opens like a curtain while the photo settles from a zoom
+   4. banner lines float up, the gold bar draws, the icon's strokes draw themselves
+   5. school name and button follow */
+.academics__title[data-revealed] .academics__letter {
+  animation: academics-letter 0.9s var(--ease-out) calc(var(--c) * 55ms) backwards;
+}
+
+.program-card[data-revealed] {
+  animation: reveal-rise-3d 1.1s var(--ease-out) var(--card-delay) backwards;
+}
+
+.program-card[data-revealed] .program-card__media {
+  animation: program-curtain 1.1s var(--ease-curtain) calc(var(--card-delay) + 120ms) backwards;
+}
+
+.program-card[data-revealed] .program-card__media img,
+.program-card[data-revealed] .program-card__media--poster .program-card__banner {
+  animation: reveal-settle 1.8s var(--ease-out) calc(var(--card-delay) + 120ms) backwards;
+}
+
+.program-card[data-revealed] .program-card__banner > span {
+  animation: reveal-blur-up 0.9s var(--ease-out) calc(var(--card-delay) + 650ms) backwards;
+}
+
+.program-card[data-revealed] .program-card__banner > span:nth-child(2) {
+  animation-delay: calc(var(--card-delay) + 760ms);
+}
+
+.program-card[data-revealed] .program-card__banner::after {
+  animation: program-bar 0.8s var(--ease-out) calc(var(--card-delay) + 900ms) backwards;
+}
+
+.program-card[data-revealed] .program-card__icon > * {
+  animation: program-draw 1.6s ease-in-out calc(var(--card-delay) + 700ms) backwards;
+}
+
+.program-card[data-revealed] .program-card__media--art::before {
+  animation: program-ripple 1.6s ease-out calc(var(--card-delay) + 1300ms) backwards;
+}
+
+.program-card[data-revealed] .program-card__name {
+  animation: reveal-up 0.8s var(--ease-out) calc(var(--card-delay) + 450ms) backwards;
+}
+
+.program-card[data-revealed] .pill-btn {
+  animation: reveal-pop 0.7s var(--ease-back) calc(var(--card-delay) + 600ms) backwards;
+}
+
+@keyframes academics-letter {
+  from {
+    opacity: 0;
+    transform: translateY(110%) rotate(10deg);
+  }
+}
+
+@keyframes program-curtain {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes program-bar {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+/* Shapes use pathLength=1 (see normalizePathLength), so 1 unit is the whole stroke */
+@keyframes program-draw {
+  from {
+    stroke-dasharray: 1 2;
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dasharray: 1 2;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes program-ripple {
+  from {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(0.55);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
 }
 
 /* Placement banner */
@@ -49,6 +285,39 @@
 .placement__media {
   flex: 0 0 761px;
   overflow: hidden;
+}
+
+.placement__media[data-revealed] {
+  animation: placement-curtain 1.3s var(--ease-curtain) backwards;
+}
+
+.placement__media[data-revealed] img {
+  animation: reveal-settle 2s var(--ease-out) backwards;
+}
+
+.placement__panel[data-revealed] {
+  --delay: 250ms;
+}
+
+.placement__panel[data-revealed] .placement__title span {
+  animation: reveal-blur-up 1s var(--ease-out) 550ms backwards;
+}
+
+.placement__panel[data-revealed] .placement__title span:nth-child(2) {
+  animation-delay: 680ms;
+}
+
+.placement__panel[data-revealed] .pill-btn {
+  animation: reveal-pop 0.7s var(--ease-back) 900ms backwards;
+}
+
+@keyframes placement-curtain {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
 }
 
 .placement__media img {
@@ -71,7 +340,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: var(--font-roboto);
   font-size: 49px;
   font-weight: 400;
   line-height: 55px;
@@ -85,14 +353,59 @@
   width: 147px;
 }
 
+/* Scroll-linked depth where supported: the icons drift and the campus photo pans as you scroll */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .program-card__icon {
+      animation: program-icon-drift linear both;
+      animation-timeline: view();
+    }
+
+    .placement__media img {
+      scale: 1.12;
+      animation: placement-pan linear both;
+      animation-timeline: view();
+    }
+
+    .placement__media[data-revealed] img {
+      animation:
+        reveal-settle 2s var(--ease-out) backwards,
+        placement-pan linear both;
+      animation-timeline: auto, view();
+    }
+  }
+}
+
+@keyframes program-icon-drift {
+  from {
+    translate: 0 14%;
+  }
+  to {
+    translate: 0 -14%;
+  }
+}
+
+@keyframes placement-pan {
+  from {
+    translate: 0 -4%;
+  }
+  to {
+    translate: 0 4%;
+  }
+}
+
 @media (max-width: 1100px) {
   .academics {
     padding: 40px 24px 0;
   }
 
   .academics__grid {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 32px 24px;
+    gap: 40px 24px;
+  }
+
+  .program-card {
+    flex: 1 1 300px;
+    max-width: 400px;
   }
 
   .placement {

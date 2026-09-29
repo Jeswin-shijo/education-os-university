@@ -18,7 +18,6 @@
 .hero__title {
   max-width: 700px;
   padding-left: 1px;
-  font-family: var(--font-inter);
   font-size: 29px;
   font-weight: 700;
   line-height: 34px;
@@ -45,7 +44,7 @@
 }
 
 .hero__campus strong {
-  font-weight: 600;
+  font-weight: 700;
   color: #8f0a27;
 }
 
@@ -67,6 +66,7 @@
 }
 
 .achiever-card {
+  position: relative;
   margin: 0;
   width: 161px;
   height: 197px;
@@ -80,6 +80,47 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.achiever-card__caption {
+  position: absolute;
+  top: 16px;
+  left: 19px;
+  right: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  white-space: nowrap;
+}
+
+.achiever-card__name {
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 13px;
+  letter-spacing: -0.1px;
+  color: #b01c2e;
+}
+
+.achiever-card__talent {
+  font-size: 9px;
+  line-height: 11px;
+  color: #262626;
+}
+
+.achiever-card__score {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 173px;
+  font-size: 9.5px;
+  line-height: 11px;
+  text-align: center;
+  color: #4d4100;
+}
+
+.achiever-card__score strong {
+  font-weight: 700;
+  color: #111;
 }
 
 @keyframes card-in {
@@ -182,7 +223,7 @@
   height: 17px;
   padding-left: 1px;
   font-size: 11.5px;
-  font-weight: 600;
+  font-weight: 700;
   color: #000;
 }
 
@@ -235,14 +276,14 @@
 
 .admission__city-name {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   color: #222;
 }
 
 .admission__city a {
   margin-left: 8px;
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 700;
   color: #8f0a27;
   text-decoration: underline;
 }
@@ -288,7 +329,7 @@
 
 .stat-card__value {
   font-size: 29px;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
   color: #a0102e;
   letter-spacing: -0.3px;

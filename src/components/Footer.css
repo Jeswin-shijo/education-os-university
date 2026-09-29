@@ -1,8 +1,6 @@
 .site-footer {
   background: var(--navy-900);
   color: #b6c0d6;
-  font-family: var(--font-carlito);
-  letter-spacing: -0.25px;
 }
 
 .site-footer__inner {
@@ -23,9 +21,8 @@
 
 .site-footer__about p {
   margin-top: 23px;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 21.4px;
-  letter-spacing: -0.34px;
   text-align: justify;
   hyphens: none;
 }

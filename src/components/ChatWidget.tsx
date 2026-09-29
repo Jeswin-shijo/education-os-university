@@ -24,10 +24,10 @@ export default function ChatWidget() {
       <button
         type="button"
         className="chat-widget__launcher"
-        aria-label="Chat with SSVM Clara"
+        aria-label="Chat with Dhanalakshmi Srinivasan University"
         onClick={() => setShowBubble((s) => !s)}
       >
-        <img src={images.chatAvatar} alt="" width={66} height={53} />
+        <img src={images.footerLogo} alt="" width={60} height={60} />
       </button>
     </div>
   )

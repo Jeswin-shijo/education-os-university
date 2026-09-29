@@ -22,7 +22,14 @@ function AchieverCarousel() {
       <div className="achievers__track">
         {visible.map((a) => (
           <figure key={a.name} className="achiever-card">
-            <img src={a.image} alt={`${a.name}, ${a.talent} – also scored ${a.score}`} />
+            <img src={a.image} alt="" />
+            <figcaption className="achiever-card__caption">
+              <span className="achiever-card__name">{a.name}</span>
+              <span className="achiever-card__talent">{a.talent}</span>
+            </figcaption>
+            <p className="achiever-card__score">
+              Also scored <strong>{a.score}</strong>
+            </p>
           </figure>
         ))}
       </div>

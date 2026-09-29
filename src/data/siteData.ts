@@ -16,7 +16,6 @@ import campusSports from '../assets/images/campus-sports.jpg'
 import campusLifeSkills from '../assets/images/campus-lifeskills.jpg'
 import campusDecoLeft from '../assets/images/campus-deco-left.png'
 import campusDecoRight from '../assets/images/campus-deco-right.png'
-import chatAvatar from '../assets/images/chat-avatar.png'
 
 import google from '../assets/images/recruiters/google.png'
 import amazon from '../assets/images/recruiters/amazon.png'
@@ -46,7 +45,6 @@ export const images = {
   campusAerial,
   campusDecoLeft,
   campusDecoRight,
-  chatAvatar,
 }
 
 export const university = {
@@ -146,15 +144,58 @@ export const publications = {
   ] satisfies Publication[],
 }
 
+export type AcademicIcon = 'engineering' | 'nursing' | 'pharmacy' | 'allied-health' | 'physiotherapy'
+
 export interface AcademicProgram {
-  title: string
-  image: string
+  name: string
+  /** Banner heading drawn over the card art, one entry per line */
+  bannerLines: string[]
+  icon: AcademicIcon
+  /** Photo for the card; schools without one get an illustrated banner */
+  image?: string
+  /** The photo has its own blank poster panel, so the banner sits inside it instead of on a scrim */
+  bannerOnPoster?: boolean
+}
+
+/* Drop-in photos: save an image as src/assets/images/academics/<icon>.jpg (or .png/.webp),
+   e.g. nursing.jpg, and that school's card uses it; see the README in that folder. */
+const academicPhotos = import.meta.glob<string>('../assets/images/academics/*.{jpg,jpeg,png,webp}', {
+  eager: true,
+  import: 'default',
+})
+
+function academicPhoto(icon: AcademicIcon): string | undefined {
+  const match = Object.entries(academicPhotos).find(([path]) => path.split('/').pop()?.split('.')[0] === icon)
+  return match?.[1]
 }
 
 export const academics: AcademicProgram[] = [
-  { title: 'Engineering and Technology', image: academicsEngineering },
-  { title: 'Engineering and Technology', image: academicsEngineering },
-  { title: 'Engineering and Technology', image: academicsEngineering },
+  {
+    name: 'School of Engineering & Technology',
+    bannerLines: ['Engineering', 'and Technology'],
+    icon: 'engineering',
+    image: academicsEngineering,
+    bannerOnPoster: true,
+  },
+  {
+    name: 'College of Nursing and Research',
+    bannerLines: ['Nursing', 'and Research'],
+    icon: 'nursing',
+    image: academicPhoto('nursing'),
+  },
+  { name: 'College of Pharmacy', bannerLines: ['Pharmacy'], icon: 'pharmacy', image: academicPhoto('pharmacy') },
+  {
+    name: 'School of Allied Health Sciences',
+    bannerLines: ['Allied Health', 'Sciences'],
+    icon: 'allied-health',
+    image: academicPhoto('allied-health'),
+  },
+  {
+    name: 'School of Physiotherapy',
+    bannerLines: ['Physiotherapy'],
+    icon: 'physiotherapy',
+    image: academicPhoto('physiotherapy'),
+  },
 ]
 
 export const placement = {
@@ -229,5 +270,5 @@ export const footer = {
 }
 
 export const chatWidget = {
-  message: 'Hi there! I’m SSVM Clara. Curious about SSVM? Just ask!',
+  message: 'Hi there! I’m SSVM Clara. Curious about SSVM? Just\u00a0ask!',
 }

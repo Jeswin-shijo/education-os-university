@@ -28,7 +28,6 @@
   display: flex;
   flex-direction: column;
   color: var(--brand-yellow);
-  font-family: var(--font-roboto);
   line-height: 1;
   text-transform: uppercase;
 }
@@ -63,7 +62,6 @@
   border-radius: 999px;
   background: #fff;
   color: var(--maroon);
-  font-family: var(--font-inter);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: -0.15px;
@@ -104,7 +102,7 @@
 .mainnav__list {
   display: flex;
   align-items: center;
-  gap: 13px;
+  gap: 11px;
   height: 30px;
   padding-left: 18px;
   white-space: nowrap;
@@ -121,7 +119,6 @@
   align-items: center;
   gap: 1px;
   color: #141414;
-  font-family: var(--font-poppins);
   font-size: 14px;
   font-weight: 400;
   text-transform: uppercase;

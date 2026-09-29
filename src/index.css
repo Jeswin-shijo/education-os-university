@@ -11,14 +11,11 @@
   --cream-bg: #fef6df;
   --text: #1b1b1b;
 
-  --font-inter: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-roboto: 'Roboto', system-ui, sans-serif;
-  --font-poppins: 'Poppins', system-ui, sans-serif;
-  --font-oxygen: 'Oxygen', system-ui, sans-serif;
-  --font-lato: 'Lato', system-ui, sans-serif;
-  --font-playfair: 'Playfair Display', Georgia, serif;
-  --font-source: 'Source Sans 3', system-ui, sans-serif;
-  --font-carlito: 'Carlito', Calibri, 'Segoe UI', sans-serif;
+  --font-sans: 'Oxygen', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-curtain: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 *,
@@ -34,7 +31,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  font-family: var(--font-inter);
+  font-family: var(--font-sans);
   color: var(--text);
   background: #fff;
   -webkit-font-smoothing: antialiased;
@@ -97,9 +94,8 @@ button {
   border-radius: 999px;
   background: var(--btn-blue);
   color: #fff;
-  font-family: var(--font-inter);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.2px;
   text-transform: uppercase;
   white-space: nowrap;
@@ -108,11 +104,16 @@ button {
 
 .pill-btn svg {
   flex-shrink: 0;
+  transition: transform 0.25s ease;
 }
 
 .pill-btn:hover {
   background: #1a3180;
   transform: translateY(-1px);
+}
+
+.pill-btn:hover svg {
+  transform: translateX(3px);
 }
 
 .sr-only {
@@ -125,4 +126,114 @@ button {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* ---------- Scroll reveal (driven by useScrollReveal) ----------
+   Elements start hidden and animate in once they carry `data-revealed`.
+   Keyframes only define the starting state (`from`), so each element animates
+   back to its own resting style, and `backwards` fill hands control to normal
+   CSS afterwards, which keeps hover and active-state transitions working. */
+[data-reveal]:not([data-revealed]) {
+  opacity: 0;
+}
+
+[data-revealed] {
+  animation-duration: 0.9s;
+  animation-timing-function: var(--ease-out);
+  animation-fill-mode: backwards;
+  animation-delay: calc(var(--i, 0) * var(--stagger, 100ms) + var(--delay, 0ms));
+}
+
+[data-reveal='up'][data-revealed] {
+  animation-name: reveal-up;
+}
+
+[data-reveal='fade'][data-revealed] {
+  animation-name: reveal-fade;
+}
+
+[data-reveal='left'][data-revealed] {
+  animation-name: reveal-from-left;
+}
+
+[data-reveal='right'][data-revealed] {
+  animation-name: reveal-from-right;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}
+
+@keyframes reveal-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes reveal-from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-70px);
+  }
+}
+
+@keyframes reveal-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(70px);
+  }
+}
+
+/* Card that stands up out of the page */
+@keyframes reveal-rise-3d {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) translateY(80px) rotateX(16deg) scale(0.94);
+  }
+}
+
+@keyframes reveal-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+@keyframes reveal-blur-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.9em);
+    filter: blur(6px);
+  }
+}
+
+/* Image zooms out and settles into its own resting scale as its frame opens */
+@keyframes reveal-settle {
+  from {
+    scale: 1.3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal] *,
+  [data-reveal]::before,
+  [data-reveal]::after,
+  [data-reveal] *::before,
+  [data-reveal] *::after {
+    animation: none !important;
+  }
+
+  [data-reveal]:not([data-revealed]) {
+    opacity: 1;
+  }
+}
+
+@media print {
+  [data-reveal]:not([data-revealed]) {
+    opacity: 1;
+  }
 }
