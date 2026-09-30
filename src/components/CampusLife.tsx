@@ -1,6 +1,6 @@
 import { useState, type ComponentType, type CSSProperties } from 'react'
 import { ArrowRight, Cpu, Lightbulb, Users } from 'lucide-react'
-import { campusLife, images, type CampusLifeKey } from '../data/siteData'
+import { campusLife, type CampusLifeKey } from '../data/siteData'
 import { stagger, useScrollReveal } from '../hooks/useScrollReveal'
 import { RunnerIcon } from './BrandIcons'
 import './CampusLife.css'
@@ -20,13 +20,11 @@ export default function CampusLife() {
     <section ref={ref} className="campus-life">
       <div className="campus-life__inner page">
         <img
-          src=""
           alt=""
           className="campus-life__deco campus-life__deco--left"
           data-reveal="left"
         />
         <img
-          src=""
           alt=""
           className="campus-life__deco campus-life__deco--right"
           data-reveal="right"
