@@ -1,3 +1,7 @@
+/* ═══════════════════════════════════════════════════════════
+   ACADEMICS SECTION
+   ═══════════════════════════════════════════════════════════ */
+
 .academics {
   padding: 30px 51px 0 50px;
 }
@@ -17,216 +21,9 @@
   display: inline-block;
 }
 
-.academics__grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 48px 32px;
-  margin-top: 32px;
-}
-
-.program-card {
-  --card-delay: calc(var(--i, 0) * 140ms);
-  flex: 0 1 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform-origin: 50% 100%;
-}
-
-.program-card__media {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 400 / 344;
-  overflow: hidden;
-  container-type: inline-size;
-  transition:
-    transform 0.5s var(--ease-out),
-    box-shadow 0.5s var(--ease-out);
-}
-
-.program-card__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: scale 0.8s var(--ease-out);
-}
-
-/* Banner heading, sized in container units so it scales with the card on every breakpoint.
-   On the engineering photo it sits in the poster's blank navy panel. */
-.program-card__banner {
-  position: absolute;
-  z-index: 2;
-  top: 2cqw;
-  left: 56.5%;
-  display: flex;
-  flex-direction: column;
-  font-size: 4cqw;
-  font-weight: 700;
-  line-height: 5.3cqw;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  color: #fff;
-  white-space: nowrap;
-}
-
-/* The poster title must zoom with its photo to stay inside the poster panel. The origin is
-   the photo's centre (50%, 43cqw) expressed from the banner's own top-left (56.5%, 2cqw). */
-.program-card__media--poster .program-card__banner {
-  transform-origin: -6.5cqw 41cqw;
-  transition: scale 0.8s var(--ease-out);
-}
-
-/* Illustrated banner for schools without a photo, echoing the navy poster in the engineering photo */
-.program-card__media--art {
-  background:
-    radial-gradient(circle at 74% 64%, rgba(255, 255, 255, 0.1) 0 19%, transparent 19.3%),
-    radial-gradient(circle at 74% 64%, transparent 0 27%, rgba(255, 255, 255, 0.12) 27.2% 27.6%, transparent 27.9%),
-    radial-gradient(circle at 74% 64%, transparent 0 36%, rgba(255, 255, 255, 0.07) 36.2% 36.5%, transparent 36.8%),
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 22px),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 22px),
-    linear-gradient(155deg, #24518f 0%, #153b75 48%, #0b2553 100%);
-}
-
-/* Ripple ring behind the icon */
-.program-card__media--art::before {
-  content: '';
-  position: absolute;
-  left: 74%;
-  top: 64%;
-  width: 44cqw;
-  height: 44cqw;
-  border: 1.5px solid rgba(255, 255, 255, 0.45);
-  border-radius: 50%;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-/* Drop-in photo without a poster panel: darken the top-left so the heading stays legible */
-.program-card__media--photo::after {
-  content: '';
-  position: absolute;
-  z-index: 1;
-  inset: 0;
-  background: linear-gradient(160deg, rgba(8, 26, 72, 0.88) 0%, rgba(8, 26, 72, 0.5) 34%, rgba(8, 26, 72, 0) 62%);
-  pointer-events: none;
-}
-
-.program-card__media--art .program-card__banner,
-.program-card__media--photo .program-card__banner {
-  top: 9cqw;
-  left: 8cqw;
-  font-size: 6cqw;
-  line-height: 7.4cqw;
-}
-
-.program-card__media--art .program-card__banner::after,
-.program-card__media--photo .program-card__banner::after {
-  content: '';
-  width: 12cqw;
-  height: 0.9cqw;
-  margin-top: 3cqw;
-  border-radius: 1cqw;
-  background: #f2b81b;
-  transform-origin: left;
-}
-
-.program-card__icon {
-  position: absolute;
-  left: 74%;
-  top: 64%;
-  width: 28cqw;
-  height: 28cqw;
-  color: rgba(255, 255, 255, 0.92);
-  transform: translate(-50%, -50%);
-  transition: transform 0.6s var(--ease-back);
-}
-
-.program-card__name {
-  margin: 20px 0 16px;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 22px;
-  letter-spacing: 0.4px;
-  text-align: center;
-  text-transform: uppercase;
-  color: #0e2350;
-}
-
-.program-card .pill-btn {
-  margin-top: auto;
-  width: 147px;
-}
-
-/* Hover */
-.program-card:hover .program-card__media {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 36px rgba(14, 35, 80, 0.22);
-}
-
-.program-card:hover .program-card__media img,
-.program-card:hover .program-card__media--poster .program-card__banner {
-  scale: 1.07;
-}
-
-.program-card:hover .program-card__icon {
-  transform: translate(-50%, -50%) scale(1.08) rotate(-6deg);
-}
-
-.program-card:hover .program-card__media--art::before {
-  animation: program-ripple 1.8s ease-out infinite;
-}
-
-/* ---------- Academics scroll animation ----------
-   1. heading letters rise out of a mask one by one
-   2. each card stands up (3D) with its column's stagger
-   3. the card art opens like a curtain while the photo settles from a zoom
-   4. banner lines float up, the gold bar draws, the icon's strokes draw themselves
-   5. school name and button follow */
+/* ---------- Title scroll animation ---------- */
 .academics__title[data-revealed] .academics__letter {
   animation: academics-letter 0.9s var(--ease-out) calc(var(--c) * 55ms) backwards;
-}
-
-.program-card[data-revealed] {
-  animation: reveal-rise-3d 1.1s var(--ease-out) var(--card-delay) backwards;
-}
-
-.program-card[data-revealed] .program-card__media {
-  animation: program-curtain 1.1s var(--ease-curtain) calc(var(--card-delay) + 120ms) backwards;
-}
-
-.program-card[data-revealed] .program-card__media img,
-.program-card[data-revealed] .program-card__media--poster .program-card__banner {
-  animation: reveal-settle 1.8s var(--ease-out) calc(var(--card-delay) + 120ms) backwards;
-}
-
-.program-card[data-revealed] .program-card__banner > span {
-  animation: reveal-blur-up 0.9s var(--ease-out) calc(var(--card-delay) + 650ms) backwards;
-}
-
-.program-card[data-revealed] .program-card__banner > span:nth-child(2) {
-  animation-delay: calc(var(--card-delay) + 760ms);
-}
-
-.program-card[data-revealed] .program-card__banner::after {
-  animation: program-bar 0.8s var(--ease-out) calc(var(--card-delay) + 900ms) backwards;
-}
-
-.program-card[data-revealed] .program-card__icon > * {
-  animation: program-draw 1.6s ease-in-out calc(var(--card-delay) + 700ms) backwards;
-}
-
-.program-card[data-revealed] .program-card__media--art::before {
-  animation: program-ripple 1.6s ease-out calc(var(--card-delay) + 1300ms) backwards;
-}
-
-.program-card[data-revealed] .program-card__name {
-  animation: reveal-up 0.8s var(--ease-out) calc(var(--card-delay) + 450ms) backwards;
-}
-
-.program-card[data-revealed] .pill-btn {
-  animation: reveal-pop 0.7s var(--ease-back) calc(var(--card-delay) + 600ms) backwards;
 }
 
 @keyframes academics-letter {
@@ -236,45 +33,216 @@
   }
 }
 
-@keyframes program-curtain {
-  from {
-    clip-path: inset(0 0 100% 0);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-  }
+/* ═══════════════════════════════════════════════════════════
+   FAN-OUT STAGE
+   container-type → children size in cqw so the composition
+   scales identically on phone, tablet and desktop.
+   ═══════════════════════════════════════════════════════════ */
+
+.fan-stage {
+  container-type: inline-size;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 490 / 374;
+  margin-top: 32px;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-@keyframes program-bar {
-  from {
-    transform: scaleX(0);
-  }
+.fan-stage__cards {
+  position: absolute;
+  inset: 0;
 }
 
-/* Shapes use pathLength=1 (see normalizePathLength), so 1 unit is the whole stroke */
-@keyframes program-draw {
-  from {
-    stroke-dasharray: 1 2;
-    stroke-dashoffset: 1;
-  }
-  to {
-    stroke-dasharray: 1 2;
-    stroke-dashoffset: 0;
-  }
+/* ═══════════════════════════════════════════════════════════
+   FAN CARD
+   Every card is centred in the stage and then moved by
+   CSS variables written from JS:
+     --x / --y  offset (cqw)   --r  rotation   --s  scale   --z  layer
+   ═══════════════════════════════════════════════════════════ */
+
+.fan-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 27.2cqw;
+  height: 38.8cqw;
+  border-radius: 3.1cqw;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  transform:
+    translate(-50%, -50%)
+    translate(var(--x, 0), var(--y, 0))
+    rotate(var(--r, 0deg))
+    scale(var(--s, 1));
+  z-index: var(--z, 1);
+  transition:
+    transform var(--fan-dur, 0.3s) var(--fan-ease, cubic-bezier(0.25, 1, 0.5, 1)),
+    box-shadow var(--fan-dur, 0.3s) ease;
+  will-change: transform;
+  backface-visibility: hidden;
+
+  /* Gradient using card colours */
+  background:
+    linear-gradient(to bottom,
+      rgba(0,0,0,0) 30%, rgba(0,0,0,0.15) 53%, rgba(0,0,0,0.45) 75%, rgba(0,0,0,0.65) 100%),
+    linear-gradient(150deg, var(--c1) 0%, var(--c2) 60%);
+
+  box-shadow:
+    0 1.8cqw 4.5cqw rgba(0, 0, 0, 0.55),
+    0 0 0.8cqw rgba(0, 0, 0, 0.25);
 }
 
-@keyframes program-ripple {
-  from {
-    opacity: 0.9;
-    transform: translate(-50%, -50%) scale(0.55);
-  }
-  to {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(1.5);
-  }
+/* Top highlight overlay */
+.fan-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.28), rgba(255,255,255,0) 48%);
+  opacity: 0;
+  transition: opacity var(--fan-dur, 0.3s) ease;
+  pointer-events: none;
 }
 
-/* Placement banner */
+.fan-card.is-hover::after { opacity: 1; }
+
+.fan-card.is-buried {
+  box-shadow: none;
+}
+
+.fan-card.is-hover {
+  box-shadow:
+    0 2.4cqw 6cqw rgba(0, 0, 0, 0.62),
+    0 0 1cqw rgba(0, 0, 0, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CARD MEDIA (image or icon)
+   ═══════════════════════════════════════════════════════════ */
+
+.fan-card__media {
+  position: relative;
+  width: 100%;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.fan-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: scale 0.5s var(--ease-out);
+}
+
+.fan-card.is-hover .fan-card__media img {
+  scale: 1.06;
+}
+
+/* Icon variant — gradient background with centred icon */
+.fan-card__media--art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fan-card__icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55%;
+  height: 55%;
+}
+
+.fan-card__icon {
+  width: 100%;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.75);
+  transition: transform 0.5s var(--ease-out);
+}
+
+.fan-card.is-hover .fan-card__icon {
+  transform: scale(1.08) rotate(-4deg);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Poster banner sits inside the photo */
+.fan-card__media--poster img {
+  object-position: left center;
+}
+
+/* Photo without poster – dark scrim for legibility */
+.fan-card__media--photo::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(160deg,
+    rgba(8, 26, 72, 0.6) 0%,
+    rgba(8, 26, 72, 0.2) 40%,
+    rgba(8, 26, 72, 0) 65%);
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CARD BODY (number, title, text)
+   ═══════════════════════════════════════════════════════════ */
+
+.fan-card__body {
+  position: relative;
+  padding: 2cqw 2.5cqw 2.8cqw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.fan-card__num {
+  position: absolute;
+  top: 1.4cqw;
+  right: 2.2cqw;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: max(6px, 1.6cqw);
+  opacity: 0.5;
+  color: #fff;
+}
+
+.fan-card__title {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-size: max(9px, 2.8cqw);
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 0.6cqw;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.fan-card__text {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: max(6px, 1.5cqw);
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CTA BELOW STAGE
+   ═══════════════════════════════════════════════════════════ */
+
+.academics__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PLACEMENT BANNER
+   ═══════════════════════════════════════════════════════════ */
+
 .placement {
   display: flex;
   height: 475px;
@@ -353,14 +321,9 @@
   width: 147px;
 }
 
-/* Scroll-linked depth where supported: the icons drift and the campus photo pans as you scroll */
+/* Scroll-linked depth where supported */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .program-card__icon {
-      animation: program-icon-drift linear both;
-      animation-timeline: view();
-    }
-
     .placement__media img {
       scale: 1.12;
       animation: placement-pan linear both;
@@ -376,15 +339,6 @@
   }
 }
 
-@keyframes program-icon-drift {
-  from {
-    translate: 0 14%;
-  }
-  to {
-    translate: 0 -14%;
-  }
-}
-
 @keyframes placement-pan {
   from {
     translate: 0 -4%;
@@ -394,18 +348,13 @@
   }
 }
 
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════ */
+
 @media (max-width: 1100px) {
   .academics {
     padding: 40px 24px 0;
-  }
-
-  .academics__grid {
-    gap: 40px 24px;
-  }
-
-  .program-card {
-    flex: 1 1 300px;
-    max-width: 400px;
   }
 
   .placement {
@@ -425,6 +374,10 @@
 }
 
 @media (max-width: 760px) {
+  .academics {
+    padding: 30px 16px 0;
+  }
+
   .academics__title {
     font-size: 32px;
   }
@@ -436,5 +389,15 @@
   .placement__title {
     font-size: 36px;
     line-height: 42px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .fan-card {
+    transition-duration: 0.01s !important;
   }
 }
