@@ -20,13 +20,13 @@ export default function CampusLife() {
     <section ref={ref} className="campus-life">
       <div className="campus-life__inner page">
         <img
-          src={images.campusDecoLeft}
+          src={''}
           alt=""
           className="campus-life__deco campus-life__deco--left"
           data-reveal="left"
         />
         <img
-          src={images.campusDecoRight}
+          src={''}
           alt=""
           className="campus-life__deco campus-life__deco--right"
           data-reveal="right"
