@@ -68,7 +68,7 @@ export default function Academics() {
     <>
       <section ref={sectionRef} className="academics page">
         <h2 className="academics__title" data-reveal="letters" aria-label={ACADEMICS_TITLE}>
-          {[...ACADEMICS_TITLE].map((letter, i) => (
+          {ACADEMICS_TITLE.split('').map((letter, i) => (
             <span key={i} className="academics__letter" style={{ '--c': i } as CSSProperties} aria-hidden="true">
               {letter}
             </span>

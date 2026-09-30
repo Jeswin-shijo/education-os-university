@@ -4,7 +4,7 @@ import student1 from '../assets/images/student-1.png'
 import student2 from '../assets/images/student-2.png'
 import student3 from '../assets/images/student-3.png'
 import videoThumb from '../assets/images/video-thumb.jpg'
-import founderPhoto from '../assets/images/founder.jpg'
+import founderPhoto from '../assets/images/ayya.png'
 import conclave from '../assets/images/conclave.png'
 import pubBrochure from '../assets/images/pub-brochure.jpg'
 import pubMagazine from '../assets/images/pub-magazine.jpg'
@@ -68,15 +68,14 @@ export const navItems: string[] = [
 
 export const hero = {
   titleParts: [
-    { text: 'Top Rated ' },
-    { text: 'CBSE Schools', highlight: true },
-    { text: ' in ' },
-    { text: 'coimbatore', highlight: true },
-    { text: ' - Orchids International School' },
+    { text: 'Leading University in ' },
+    { text: 'Chennai', highlight: true },
+    { text: ' - Dhanalakshmi Srinivasan University' },
   ],
   campusPrompt: 'Find a campus near you',
-  campusName: 'Vilankurichi',
-}
+
+  campusName: 'Chennai',
+};
 
 export interface Achiever {
   name: string
@@ -103,27 +102,26 @@ export interface Stat {
 }
 
 export const stats: Stat[] = [
-  { value: '130+', label: 'Schools' },
-  { value: '20+', label: 'Cities' },
-  { value: '7000+', label: 'Teachers' },
-  { value: '75000+', label: 'Students' },
+  { value: '130+', label: 'Acres of Campus' },
+  { value: '80+', label: 'Multimedia Classrooms' },
+  { value: '760K+', label: 'Book Volumes' },
+  { value: '250+', label: 'Recruiters' },
 ]
 
 export const videoSection = {
-  title: 'See Orchids in Action',
+  title: 'Why Dhanalakshmi Srinivasan University',
   description:
-    'Experience world-class education at Orchids The International School — where innovation meets holistic learning across 130+ campuses in 20+ cities.',
+    'The Dhanalakshmi Srinivasan University (DSU) has been established under the Tamil Nadu Private Universities Act, 2019, located in Tiruchirappali, Tamil Nadu, India. Uniqueness of DSU lies in its multi-disciplinary nature in offering a wide range of academic programmes encompassing medicine and engineering. Our motto is "education for the real world" with dedication and commitment towards nurturing the future generation. Green ambience with state-of-the-art infrastructure along with top-class faculty aims to serve the need of national and international students.',
   cta: 'Enquire Now',
 }
 
 export const founder = {
-  eyebrow: 'THE FOUNDER & SSVM’S',
-  titleLines: ['Global Vision &', 'Indian Values'],
-  quote:
-    '“Dr. Manimekalai Mohan founded SSVM Institutions in 1998 with a single play school. Today, her vision has grown into a network of 20 campuses across the Coimbatore district, combining global education standards with Indian values.”',
-  name: 'Dr Manimekalai Mohan',
-  role: 'Founder & Managing Trustee',
-  org: 'SSVM Group of Institutions®',
+  eyebrow: 'Founder-Chancellor DSU',
+  titleLines: ['Founder Message'],
+  quote:'Education is an instrument to create a knowledge society. India moves ahead in the path of giving education to all sections of population across the nation. Provision of an opportunity to pursue higher education to all eligible candidates would pave way for holistic development.', 
+  name: 'Shri. A. Srinivasan',
+  role: 'Founder & Chancellor',
+  org: ''
 }
 
 export interface Publication {
@@ -132,15 +130,15 @@ export interface Publication {
 }
 
 export const publications = {
-  eyebrow: 'SSVM INSTITUTIONS',
+  eyebrow: 'DS University',
   title: 'Digital Publications',
   buttons: [
-    { label: 'Article 2025', variant: 'orange' as const },
-    { label: 'Magazine 2024', variant: 'red' as const },
+    { label: 'Article 2026', variant: 'orange' as const },
+    { label: 'Article 2025', variant: 'red' as const },
   ],
   items: [
-    { title: ['SSVM Institutions', 'Brochure'], image: pubBrochure },
-    { title: ['Talking point | Indigo', 'Hello Magazine'], image: pubMagazine },
+    { title: ['DS University', 'Brochure'], image: pubBrochure },
+    { title: ['DS University', 'Magazine'], image: pubMagazine },
   ] satisfies Publication[],
 }
 

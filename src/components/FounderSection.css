@@ -104,7 +104,7 @@
 .founder__portrait img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* object-fit: cover; */
 }
 
 /* Digital publications */
@@ -206,7 +206,7 @@
   height: 129px;
 }
 
-.pubs__item + .pubs__item img {
+.pubs__item+.pubs__item img {
   height: 95px;
 }
 

@@ -47,13 +47,13 @@ export default function FounderSection() {
             <p className="pubs__eyebrow">{publications.eyebrow}</p>
             <h3 className="pubs__title">{publications.title}</h3>
           </div>
-          <img
+          {/* <img
             src={images.conclave}
             alt="SSVM Institutions – Transforming India Conclave ’25"
             className="pubs__badge"
             width={106}
             height={70}
-          />
+          /> */}
           <div className="pubs__buttons">
             {publications.buttons.map((b) => (
               <a key={b.label} href="#" className={`pubs__btn pubs__btn--${b.variant}`}>

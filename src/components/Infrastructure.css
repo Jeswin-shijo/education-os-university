@@ -1,0 +1,104 @@
+/* Infrastructure.css */
+.infrastructure {
+  padding: 80px 0;
+  background-color: #ffffff;
+}
+
+.infrastructure__title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #423f3f;
+  line-height: 1.25;
+  margin-bottom: 36px;
+  font-family: var(--font-sans);
+}
+
+@media (min-width: 768px) {
+  .infrastructure__title {
+    font-size: 44px;
+    margin-bottom: 48px;
+  }
+}
+
+.infrastructure__container {
+  display: flex;
+  height: 480px;
+  gap: 16px;
+  overflow: hidden;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .infrastructure__container {
+    flex-direction: column;
+    height: auto;
+  }
+}
+
+.infrastructure__card {
+  position: relative;
+  cursor: pointer;
+  border-radius: 20px;
+  overflow: hidden;
+  flex: 1;
+  transition: flex 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 120px;
+}
+
+.infrastructure__card--active {
+  flex: 5;
+}
+
+.infrastructure__card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.infrastructure__card:hover .infrastructure__card-image {
+  transform: scale(1.04);
+}
+
+.infrastructure__card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+.infrastructure__card-content {
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  right: 32px;
+  color: #ffffff;
+  z-index: 10;
+  animation: fadeInContent 0.5s ease forwards;
+}
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.infrastructure__card-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.infrastructure__card-desc {
+  font-size: 15px;
+  line-height: 1.5;
+  max-width: 500px;
+  opacity: 0.95;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}

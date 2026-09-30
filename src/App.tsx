@@ -4,6 +4,8 @@ import VideoSection from './components/VideoSection'
 import FounderSection from './components/FounderSection'
 import Academics from './components/Academics'
 import Recruiters from './components/Recruiters'
+import LifeAtDSU from './components/LifeAtDSU'
+import Infrastructure from './components/Infrastructure'
 import CampusLife from './components/CampusLife'
 import Career from './components/Career'
 import Footer from './components/Footer'
@@ -19,6 +21,8 @@ export default function App() {
         <FounderSection />
         <Academics />
         <Recruiters />
+        <LifeAtDSU />
+        <Infrastructure />
         <CampusLife />
         <Career />
       </main>
@@ -27,3 +31,5 @@ export default function App() {
     </>
   )
 }
+
+
