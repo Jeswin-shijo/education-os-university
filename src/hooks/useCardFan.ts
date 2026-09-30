@@ -13,10 +13,10 @@ const LAYOUT = {
   dropPow: 0.87,
 
   hover: {
-    scale:   { 0: 1.18, 1: 1.12, 2: 1.1 } as Record<number, number>,
-    lift:    { 0: -5.6, 1: -4.6, 2: -4.2 } as Record<number, number>,
-    push:    { 0: 0,    1: 1.8,  2: 3.1 }  as Record<number, number>,
-    rotKeep: { 0: 1,    1: 1,    2: 1 }     as Record<number, number>,
+    scale: { 0: 1.18, 1: 1.12, 2: 1.1 } as Record<number, number>,
+    lift: { 0: -5.6, 1: -4.6, 2: -4.2 } as Record<number, number>,
+    push: { 0: 0, 1: 1.8, 2: 3.1 } as Record<number, number>,
+    rotKeep: { 0: 1, 1: 1, 2: 1 } as Record<number, number>,
   },
 
   pile: { step: 0.22, scale: 0.965 },
@@ -24,7 +24,7 @@ const LAYOUT = {
 
 /** Motion presets (CSS transition values) */
 export const MOTION = {
-  open:  { dur: '0.36s', ease: 'cubic-bezier(0.25, 1, 0.5, 1)' },
+  open: { dur: '0.36s', ease: 'cubic-bezier(0.25, 1, 0.5, 1)' },
   close: { dur: '0.26s', ease: 'cubic-bezier(0.4, 0, 0.3, 1)' },
   hover: { dur: '0.30s', ease: 'cubic-bezier(0.25, 1, 0.5, 1)' },
 }
@@ -118,7 +118,7 @@ export function useCardFan(cardCount: number) {
   })
   const topRef = useRef(Math.floor((cardCount - 1) / 2))
   const tokenRef = useRef(0)
-  const resumeRef = useRef<ReturnType<typeof setTimeout>>()
+  const resumeRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const isVisibleRef = useRef(false)
 
   /** Update state with the right motion preset */
@@ -145,29 +145,29 @@ export function useCardFan(cardCount: number) {
     const token = ++tokenRef.current
     const alive = () => token === tokenRef.current
 
-    ;(async () => {
-      // eslint-disable-next-line no-constant-condition
-      while (alive()) {
-        setState({ mode: 'pile', hover: null })
-        await wait(TIMING.pileHold)
-        if (!alive()) return
+      ; (async () => {
+        // eslint-disable-next-line no-constant-condition
+        while (alive()) {
+          setState({ mode: 'pile', hover: null })
+          await wait(TIMING.pileHold)
+          if (!alive()) return
 
-        setState({ mode: 'fan', hover: null })
-        await wait(motionMs(MOTION.open) + TIMING.openHold)
-        if (!alive()) return
+          setState({ mode: 'fan', hover: null })
+          await wait(motionMs(MOTION.open) + TIMING.openHold)
+          if (!alive()) return
 
-        for (const i of SWEEP) {
-          if (i >= cardCount) continue
-          setState({ hover: i })
-          await wait(TIMING.hoverEach)
+          for (const i of SWEEP) {
+            if (i >= cardCount) continue
+            setState({ hover: i })
+            await wait(TIMING.hoverEach)
+            if (!alive()) return
+          }
+
+          setState({ hover: null })
+          await wait(TIMING.endHold)
           if (!alive()) return
         }
-
-        setState({ hover: null })
-        await wait(TIMING.endHold)
-        if (!alive()) return
-      }
-    })()
+      })()
   }, [cardCount, setState])
 
   const takeOver = useCallback(() => {
