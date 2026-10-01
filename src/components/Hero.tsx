@@ -123,7 +123,7 @@ function AdmissionForm() {
 
           <label className="field">
             <span className="field__label">
-              Select Branch <em>*</em>
+              Select Department <em>*</em>
             </span>
             <div className="field__input-wrap">
               <GraduationCap size={15} className="field__icon" />
@@ -140,7 +140,7 @@ function AdmissionForm() {
         <div className="admission__city">
           <MapPin size={14} className="admission__pin-icon" />
           <span className="admission__city-name">{admission.city}</span>
-          <a href="#" className="admission__city-link">Click to change city</a>
+          {/* <a href="#" className="admission__city-link">Click to change city</a> */}
         </div>
 
         <button type="submit" className="admission__submit">

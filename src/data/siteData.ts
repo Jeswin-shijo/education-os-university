@@ -97,7 +97,13 @@ export const achievers: Achiever[] = [
 
 export const admission = {
   years: ['2027-28', '2026-27'],
-  branches: ['DSU Trichy', 'DSU Chennai'],
+  branches: [
+    "School of Engineering & Tech",
+    "School of Nursing",
+    "School of Pharmacy",
+    "School of Allied Health Sciences",
+    "School of Physiotherapy"
+  ],
   city: 'Chennai',
 }
 
