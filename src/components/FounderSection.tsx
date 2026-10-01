@@ -69,7 +69,7 @@ export default function FounderSection() {
             </a>
 
             {/* Navigation Dots & Controls */}
-            {/* <div className="founder-section__nav">
+            <div className="founder-section__nav">
               <button
                 type="button"
                 className="founder-nav-btn"
@@ -99,7 +99,7 @@ export default function FounderSection() {
               >
                 <ChevronRight size={18} />
               </button>
-            </div> */}
+            </div>
           </div>
         </div>
 

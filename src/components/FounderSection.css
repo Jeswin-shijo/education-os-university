@@ -430,4 +430,8 @@
   .founder-section__actions {
     justify-content: center;
   }
+
+  .founder-section__nav {
+    display: none;
+  }
 }
