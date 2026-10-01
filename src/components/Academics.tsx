@@ -1,7 +1,7 @@
 import { type CSSProperties, useCallback, useEffect, useRef } from 'react'
 import type { LucideIcon } from 'lucide-react'
 import { ArrowRight, Cpu, Microscope, PersonStanding, Pill, Stethoscope } from 'lucide-react'
-import { academics, images, placement, type AcademicIcon, type AcademicProgram } from '../data/siteData'
+import { academics, images, type AcademicIcon, type AcademicProgram } from '../data/siteData'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { getPose, useCardFan } from '../hooks/useCardFan'
 import './Academics.css'
