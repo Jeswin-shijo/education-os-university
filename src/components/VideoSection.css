@@ -14,10 +14,12 @@
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
-.video-section__media img {
+.video-section__media img,
+.video-section__video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .video-section__play {

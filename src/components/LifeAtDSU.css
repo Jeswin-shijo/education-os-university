@@ -1,7 +1,13 @@
 /* LifeAtDSU.css */
 .life-dsu {
-  padding: 80px 0;
+  padding: 60px 24px;
   background-color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .life-dsu {
+    padding: 36px 16px;
+  }
 }
 
 .life-dsu__title {

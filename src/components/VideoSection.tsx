@@ -1,19 +1,41 @@
-import { useState } from 'react'
-import { images, videoSection } from '../data/siteData'
+import { useRef, useState } from 'react'
+import campusVideo from '../assets/images/video.mp4'
+import { videoSection } from '../data/siteData'
 import './VideoSection.css'
 
 export default function VideoSection() {
-  const [playing, setPlaying] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [playing, setPlaying] = useState(true)
+
+  const togglePlay = () => {
+    if (!videoRef.current) return
+    if (playing) {
+      videoRef.current.pause()
+      setPlaying(false)
+    } else {
+      videoRef.current.play()
+      setPlaying(true)
+    }
+  }
 
   return (
     <section className="video-section page">
       <div className="video-section__media">
-        <img src={images.videoThumb} alt="Student looking through a microscope" />
+        <video
+          ref={videoRef}
+          src={campusVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="video-section__video"
+          onClick={togglePlay}
+        />
         <button
           type="button"
           className={`video-section__play${playing ? ' is-playing' : ''}`}
           aria-label={playing ? 'Pause video' : 'Play video'}
-          onClick={() => setPlaying((p) => !p)}
+          onClick={togglePlay}
         >
           {playing ? (
             <svg width="18" height="20" viewBox="0 0 18 20" aria-hidden="true">

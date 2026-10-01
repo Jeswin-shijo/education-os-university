@@ -288,9 +288,9 @@ export const courses: string[] = [
 export const footer = {
   about:
     'The Dhanalakshmi Srinivasan University, Established in 2010, is a private university located in Perambalur, Tamil Nadu, India. It is part of the Dhanalakshmi Srinivasan Group, which has interests in education, healthcare, and industry. The university is recognized by the University Grants Commission (UGC) and offers a wide range of undergraduate, postgraduate, and doctoral programs in various fields, including engineering, science, management, and humanities. It is known for its focus on quality education, research, and innovation, and is committed to providing students with the skills and knowledge they need to succeed in their careers.',
-  quickLinks: ['Home', 'About us', 'Specialties', 'Our Doctors', 'Contact Us'],
-  usefulLinks: ['Cardiology', 'Orthopedics', 'Neurology', 'Pediatrics', 'Emergency Medicine'],
-  address: ' NH-45, Trichy Chennai Trunk Road,Samayapuram (Near Samayapuram Toll Plaza), Tiruchirappalli - 621 112.Tamil Nadu',
+  quickLinks: ['Home', 'About us', 'Administration', 'Academics', 'Admissions'],
+  usefulLinks: ['Placements', 'Examinations', 'Centre for Research', 'Student Life', 'Campus Harmony'],
+  address: 'No. 6, GST Road, Mamandur, Chengalpattu – 603111, Tamil Nadu, India',
   email: 'enquiry@dsuniversity.ac.in',
   phones: ['+91 70944 58021', '+91 70944 58022'],
 }
