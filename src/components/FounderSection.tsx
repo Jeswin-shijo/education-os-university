@@ -28,12 +28,6 @@ export default function FounderSection() {
             <span>READ MORE</span>
             <ArrowRight size={18} />
           </a>
-
-          <div className="founder-section__dots-left" aria-hidden="true">
-            {[...Array(18)].map((_, i) => (
-              <span key={i} className="founder-section__dot" />
-            ))}
-          </div>
         </div>
 
         {/* Center Column: Portrait with Golden Halo Ring & Dot */}
@@ -50,11 +44,6 @@ export default function FounderSection() {
 
         {/* Right Column: Digital Publications */}
         <div className="founder-section__right">
-          <div className="founder-section__dots-right" aria-hidden="true">
-            {[...Array(18)].map((_, i) => (
-              <span key={i} className="founder-section__dot" />
-            ))}
-          </div>
 
           <div className="pubs__heading">
             <span className="pubs__eyebrow">DSU UNIVERSITY</span>
