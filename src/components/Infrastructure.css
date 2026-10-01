@@ -145,12 +145,12 @@
   }
 
   .infra-card--theme-4 {
-    background: linear-gradient(140deg, #f8cf7f 0%, #f0ab3c 70%);
+    background: linear-gradient(140deg, #eadbbd 0%, #cdaf7e 70%);
     color: #231610;
   }
 
   .infra-card--theme-5 {
-     background: linear-gradient(140deg, #e1b669 0%, #efdcc2 100%);
+     background: linear-gradient(140deg, #efd29c 0%, #ece3d6 70%);
     color: #231610;
   }
 

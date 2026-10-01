@@ -106,7 +106,7 @@ export default function Infrastructure() {
               {/* <div className="infra-card-gold-tab" /> */}
 
               <div className="infra-card-inner">
-                <span className="infra-card-badge">{item.modelCode}</span>
+                {/* <span className="infra-card-badge">{item.modelCode}</span> */}
 
                 <div className="infra-card-body">
                   <h3 className="infra-card-title">{item.title}</h3>
