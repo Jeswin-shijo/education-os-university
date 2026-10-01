@@ -5,6 +5,8 @@ import student2 from '../assets/images/banner_2.jpg'
 import student3 from '../assets/images/banner_3.jpg'
 import videoThumb from '../assets/images/video-thumb.jpg'
 import founderPhoto from '../assets/images/ayya_.png'
+import proChanPhoto from '../assets/images/pro_chan.png'
+import viceChanPhoto from '../assets/images/vice_chan.png'
 import conclave from '../assets/images/conclave.png'
 import pubBrochure from '../assets/images/pub-brochure.jpg'
 import pubMagazine from '../assets/images/pub-magazine.jpg'
@@ -41,6 +43,8 @@ export const images = {
   footerLogo,
   videoThumb,
   founderPhoto,
+  proChanPhoto,
+  viceChanPhoto,
   conclave,
   campusAerial,
   campusDecoLeft,
@@ -75,9 +79,8 @@ export const hero = {
     { text: ' - Dhanalakshmi Srinivasan University' },
   ],
   campusPrompt: 'Find a campus near you',
-
   campusName: 'Chennai',
-};
+}
 
 export interface Achiever {
   name: string
@@ -117,73 +120,97 @@ export const videoSection = {
   cta: 'Enquire Now',
 }
 
-export const founder = {
-  eyebrow: 'Founder-Chancellor DSU',
-  titleLines: ['Founder Message'],
-  quote: 'Education is an instrument to create a knowledge society. India moves ahead in the path of giving education to all sections of population across the nation. Provision of an opportunity to pursue higher education to all eligible candidates would pave way for holistic development.',
-  name: 'Shri. A. Srinivasan',
-  role: 'Founder & Chancellor',
-  org: ''
-}
-
-export interface Publication {
-  title: string[]
+export interface LeaderMessage {
+  id: number
+  eyebrow: string
+  titleBlue: string
+  titleGold: string
+  quote: string
+  name: string
+  role: string
   image: string
 }
 
-export const publications = {
-  eyebrow: 'DS University',
-  title: 'Digital Publications',
-  buttons: [
-    { label: 'Article 2026', variant: 'orange' as const },
-    { label: 'Article 2025', variant: 'red' as const },
-  ],
-  items: [
-    { title: ['DS University', 'Brochure'], image: pubBrochure },
-    { title: ['DS University', 'Magazine'], image: pubMagazine },
-  ] satisfies Publication[],
+export const leaders: LeaderMessage[] = [
+  {
+    id: 1,
+    eyebrow: 'FOUNDER-CHANCELLOR DSU',
+    titleBlue: 'Founder',
+    titleGold: 'Message',
+    quote:
+      'Education is an instrument to create a knowledge society. India moves ahead in the path of giving education to all sections of population across the nation. Provision of an opportunity to pursue higher education to all eligible candidates would pave way for holistic development.',
+    name: 'Shri. A. Srinivasan',
+    role: 'Founder & Chancellor',
+    image: founderPhoto,
+  },
+  {
+    id: 2,
+    eyebrow: 'PRO-CHANCELLOR DSU',
+    titleBlue: 'Pro Chancellor',
+    titleGold: 'Message',
+    quote:
+      'Creation of a world with honest, truthful, compassionate, responsible, intelligent citizens by giving a thrust to holistic higher education is the vision of our University. Dhanalakshmi Srinivasan University (DSU) aims to uphold gender equality in providing higher education to all its student fraternity, with no socio economic or cultural discriminations.',
+    name: 'Mrs. Ananthalakshmi Kathiravan',
+    role: 'Pro Chancellor',
+    image: proChanPhoto,
+  },
+  {
+    id: 3,
+    eyebrow: 'VICE-CHANCELLOR DSU',
+    titleBlue: 'Vice Chancellor',
+    titleGold: 'Message',
+    quote:
+      'Dr C K Ranjan graduated from the Armed Forces Medical College, Pune and was commissioned into the Indian Air Force (IAF) on 03 March 1980. He holds postgraduate degrees (MD and DNB Aviation Medicine) from Bangalore University and National Board of Examinations, New Delhi. He also completed MSc (Defence Studies) from Madras University and M Phil from Birla Institute of Technology and Science, Pilani. He is a Fellow of the Indian Society of Aerospace Medicine.',
+    name: 'Air Marshal (Dr) C K Ranjan AVSM VSM (Retd)',
+    role: 'Vice Chancellor',
+    image: viceChanPhoto,
+  },
+]
+
+export const founder = {
+  eyebrow: 'Founder-Chancellor DSU',
+  titleLines: ['Founder Message'],
+  quote:
+    'Education is an instrument to create a knowledge society. India moves ahead in the path of giving education to all sections of population across the nation. Provision of an opportunity to pursue higher education to all eligible candidates would pave way for holistic development.',
+  name: 'Shri. A. Srinivasan',
+  role: 'Founder & Chancellor',
+  org: '',
 }
 
 export type AcademicIcon = 'engineering' | 'nursing' | 'pharmacy' | 'allied-health' | 'physiotherapy'
 
 export interface AcademicProgram {
   name: string
-  /** Banner heading drawn over the card art, one entry per line */
   bannerLines: string[]
   icon: AcademicIcon
-  /** Photo for the card; schools without one get an illustrated banner */
   image?: string
-  /** The photo has its own blank poster panel, so the banner sits inside it instead of on a scrim */
   bannerOnPoster?: boolean
 }
 
-/* Drop-in photos: save an image as src/assets/images/academics/<icon>.jpg (or .png/.webp),
-   e.g. nursing.jpg, and that school's card uses it; see the README in that folder. */
-const academicPhotos = import.meta.glob<string>('../assets/images/academics/*.{jpg,jpeg,png,webp}', {
-  eager: true,
-  import: 'default',
-})
-
-function academicPhoto(icon: AcademicIcon): string | undefined {
-  const match = Object.entries(academicPhotos).find(([path]) => path.split('/').pop()?.split('.')[0] === icon)
-  return match?.[1]
+function academicPhoto(slug: string): string {
+  return `/assets/image/img-${slug === 'engineering' ? 18 : slug === 'nursing' ? 19 : slug === 'pharmacy' ? 20 : slug === 'allied-health' ? 21 : 22}.jpg`
 }
 
 export const academics: AcademicProgram[] = [
   {
-    name: 'School of Engineering & Technology',
-    bannerLines: ['Engineering', 'and Technology'],
+    name: 'School of Engineering & Tech',
+    bannerLines: ['School of', 'Engineering & Tech'],
     icon: 'engineering',
     image: academicsEngineering,
     bannerOnPoster: true,
   },
   {
-    name: 'College of Nursing and Research',
-    bannerLines: ['Nursing', 'and Research'],
+    name: 'School of Nursing',
+    bannerLines: ['School of', 'Nursing'],
     icon: 'nursing',
     image: academicPhoto('nursing'),
   },
-  { name: 'College of Pharmacy', bannerLines: ['Pharmacy'], icon: 'pharmacy', image: academicPhoto('pharmacy') },
+  {
+    name: 'School of Pharmacy',
+    bannerLines: ['School of', 'Pharmacy'],
+    icon: 'pharmacy',
+    image: academicPhoto('pharmacy'),
+  },
   {
     name: 'School of Allied Health Sciences',
     bannerLines: ['Allied Health', 'Sciences'],
@@ -263,12 +290,12 @@ export const footer = {
     'The Dhanalakshmi Srinivasan University, Established in 2010, is a private university located in Perambalur, Tamil Nadu, India. It is part of the Dhanalakshmi Srinivasan Group, which has interests in education, healthcare, and industry. The university is recognized by the University Grants Commission (UGC) and offers a wide range of undergraduate, postgraduate, and doctoral programs in various fields, including engineering, science, management, and humanities. It is known for its focus on quality education, research, and innovation, and is committed to providing students with the skills and knowledge they need to succeed in their careers.',
   quickLinks: ['Home', 'About us', 'Specialties', 'Our Doctors', 'Contact Us'],
   usefulLinks: ['Cardiology', 'Orthopedics', 'Neurology', 'Pediatrics', 'Emergency Medicine'],
-  address:
-    'NH-45, Trichy Chennai Trunk Road, Samayapuram (Near Samayapuram Toll Plaza), Tiruchirappalli - 621 112. Tamil Nadu, India.',
+  address: ' NH-45, Trichy Chennai Trunk Road,Samayapuram (Near Samayapuram Toll Plaza), Tiruchirappalli - 621 112.Tamil Nadu',
   email: 'enquiry@dsuniversity.ac.in',
-  phones: ['+91 63841 76766', '+91 63841 76769'],
+  phones: ['+91 70944 58021', '+91 70944 58022'],
 }
 
 export const chatWidget = {
-  message: 'Hi there! I’m SSVM Clara. Curious about SSVM? Just\u00a0ask!',
+  message: 'Have questions? Chat with our Admissions Desk!',
 }
+

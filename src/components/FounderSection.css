@@ -124,6 +124,83 @@
   background-color: #f59e0b;
 }
 
+/* Transition effects */
+.founder-section__left,
+.founder-section__portrait-img {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.founder-transitioning {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.founder-section__actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.founder-section__nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.founder-nav-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 31, 84, 0.15);
+  background: #ffffff;
+  color: #001f54;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.founder-nav-btn:hover {
+  background: #001f54;
+  color: #ffffff;
+  border-color: #001f54;
+  transform: translateY(-1px);
+}
+
+.founder-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 4px;
+}
+
+.founder-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.founder-dot:hover {
+  background: #94a3b8;
+}
+
+.founder-dot.active {
+  width: 24px;
+  border-radius: 10px;
+  background: #d97706;
+}
+
 /* Center Column - Portrait Halo Ring & Dot */
 .founder-section__center {
   position: relative;
@@ -306,27 +383,51 @@
 }
 
 @media (max-width: 1080px) {
+  .founder-section {
+    padding: 36px 16px 36px 16px;
+  }
+
   .founder-section__inner {
     grid-template-columns: 1fr;
-    gap: 52px;
+    gap: 28px;
     text-align: center;
   }
 
   .founder-section__left,
   .founder-section__right {
     align-items: center;
-    max-width: 600px;
+    max-width: 100%;
     margin: 0 auto;
+  }
+
+  .founder-section__center {
+    height: auto;
+    min-height: 260px;
+    margin: 10px 0;
+  }
+
+  .founder-section__halo-ring {
+    width: 250px;
+    height: 250px;
+  }
+
+  .founder-section__portrait-img {
+    height: 300px;
   }
 
   .founder-section__quote {
     border-left: none;
     border-top: 3px solid #eab308;
     padding-left: 0;
-    padding-top: 16px;
+    padding-top: 14px;
+    margin-bottom: 16px;
   }
 
   .founder-section__cta {
     margin: 0 auto;
+  }
+
+  .founder-section__actions {
+    justify-content: center;
   }
 }

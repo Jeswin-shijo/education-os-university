@@ -44,7 +44,9 @@
 .campus-life__inner {
   position: relative;
   z-index: 0;
-  padding: 55px 0 30px;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 55px 24px 30px;
   text-align: center;
 }
 
@@ -108,40 +110,27 @@
 .campus-tabs {
   display: flex;
   justify-content: center;
-  gap: 16.5px;
+  gap: 16px;
   margin-top: 23px;
+  width: 100%;
 }
 
 .campus-tab {
+  flex: 1 1 0;
+  max-width: 280px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  height: 57px;
-  border-radius: 20px;
+  gap: 12px;
+  height: 54px;
+  border-radius: 18px;
   background: #fff;
   color: #0b0b1e;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: -0.2px;
   box-shadow: 0 6px 18px rgba(20, 50, 120, 0.07);
   transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.campus-tab--tech {
-  width: 290px;
-}
-
-.campus-tab--cultural {
-  width: 299px;
-}
-
-.campus-tab--sports {
-  width: 295px;
-}
-
-.campus-tab--lifeskills {
-  width: 269px;
 }
 
 .campus-tab:hover {
@@ -160,15 +149,17 @@
 .campus-cards {
   display: flex;
   justify-content: center;
-  gap: 15.5px;
+  gap: 16px;
   margin-top: 20px;
-  padding-left: 2px;
+  width: 100%;
 }
 
 .campus-card {
   position: relative;
   display: block;
-  height: 329px;
+  flex: 1 1 0;
+  max-width: 285px;
+  height: 320px;
   border-radius: 16px;
   overflow: hidden;
   text-align: left;
@@ -184,23 +175,19 @@
 }
 
 .campus-card--tech {
-  flex: 0 1 327px;
   --card: #0339ab;
 }
 
 .campus-card--cultural {
-  flex: 0 1 315px;
   --card: #fcc53a;
   color: #1c1c1c;
 }
 
 .campus-card--sports {
-  flex: 0 1 310px;
   --card: #0b8b48;
 }
 
 .campus-card--lifeskills {
-  flex: 0 1 328px;
   --card: #4f2ca8;
 }
 

@@ -1,33 +1,106 @@
-import { ArrowRight, Download } from 'lucide-react'
-import { founder, images } from '../data/siteData'
+import { useState, useEffect } from 'react'
+import { ArrowRight, Download, ChevronLeft, ChevronRight } from 'lucide-react'
+import { leaders, images } from '../data/siteData'
 import './FounderSection.css'
 
 export default function FounderSection() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
+
+  const currentLeader = leaders[currentIndex]
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      handleNext()
+    }, 6000)
+    return () => clearInterval(timer)
+  }, [currentIndex, isAnimating])
+
+  const triggerTransition = (newIndex: number) => {
+    setIsAnimating(true)
+    setTimeout(() => {
+      setCurrentIndex(newIndex)
+      setIsAnimating(false)
+    }, 200)
+  }
+
+  const handleSelect = (index: number) => {
+    if (index === currentIndex || isAnimating) return
+    triggerTransition(index)
+  }
+
+  const handlePrev = () => {
+    if (isAnimating) return
+    const nextIdx = currentIndex === 0 ? leaders.length - 1 : currentIndex - 1
+    triggerTransition(nextIdx)
+  }
+
+  const handleNext = () => {
+    if (isAnimating) return
+    const nextIdx = currentIndex === leaders.length - 1 ? 0 : currentIndex + 1
+    triggerTransition(nextIdx)
+  }
+
   return (
     <section className="founder-section">
       <div className="founder-section__inner page">
-        {/* Left Column: Founder Message */}
-        <div className="founder-section__left">
-          <span className="founder-section__eyebrow">{founder.eyebrow}</span>
+        {/* Left Column: Leader Message */}
+        <div className={`founder-section__left ${isAnimating ? 'founder-transitioning' : ''}`}>
+          <span className="founder-section__eyebrow">{currentLeader.eyebrow}</span>
 
           <h2 className="founder-section__title">
-            <span className="founder-title-blue">Founder</span>
-            <span className="founder-title-gold">Message</span>
+            <span className="founder-title-blue">{currentLeader.titleBlue}</span>
+            <span className="founder-title-gold">{currentLeader.titleGold}</span>
           </h2>
 
           <blockquote className="founder-section__quote">
-            {founder.quote}
+            {currentLeader.quote}
           </blockquote>
 
           <div className="founder-section__author">
-            <h4 className="founder-section__name">{founder.name}</h4>
-            <p className="founder-section__role">{founder.role}</p>
+            <h4 className="founder-section__name">{currentLeader.name}</h4>
+            <p className="founder-section__role">{currentLeader.role}</p>
           </div>
 
-          <a href="#" className="founder-section__cta">
-            <span>READ MORE</span>
-            <ArrowRight size={18} />
-          </a>
+          <div className="founder-section__actions">
+            <a href="#" className="founder-section__cta">
+              <span>READ MORE</span>
+              <ArrowRight size={18} />
+            </a>
+
+            {/* Navigation Dots & Controls */}
+            {/* <div className="founder-section__nav">
+              <button
+                type="button"
+                className="founder-nav-btn"
+                onClick={handlePrev}
+                aria-label="Previous leader"
+              >
+                <ChevronLeft size={18} />
+              </button>
+
+              <div className="founder-dots">
+                {leaders.map((leader, idx) => (
+                  <button
+                    key={leader.id}
+                    type="button"
+                    className={`founder-dot ${idx === currentIndex ? 'active' : ''}`}
+                    onClick={() => handleSelect(idx)}
+                    aria-label={`Go to ${leader.name}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                type="button"
+                className="founder-nav-btn"
+                onClick={handleNext}
+                aria-label="Next leader"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div> */}
+          </div>
         </div>
 
         {/* Center Column: Portrait with Golden Halo Ring & Dot */}
@@ -36,15 +109,15 @@ export default function FounderSection() {
             <span className="founder-section__ring-dot" />
           </div>
           <img
-            src={images.founderPhoto}
-            alt={founder.name}
-            className="founder-section__portrait-img"
+            key={currentLeader.id}
+            src={currentLeader.image}
+            alt={currentLeader.name}
+            className={`founder-section__portrait-img ${isAnimating ? 'founder-transitioning' : ''}`}
           />
         </div>
 
         {/* Right Column: Digital Publications */}
         <div className="founder-section__right">
-
           <div className="pubs__heading">
             <span className="pubs__eyebrow">DSU UNIVERSITY</span>
             <h3 className="pubs__title">
@@ -90,3 +163,4 @@ export default function FounderSection() {
     </section>
   )
 }
+

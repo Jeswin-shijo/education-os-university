@@ -14,8 +14,6 @@ const programIcons: Record<AcademicIcon, LucideIcon> = {
   physiotherapy: PersonStanding,
 }
 
-const ACADEMICS_TITLE = 'ACADEMICS'
-
 function mediaVariant(program: AcademicProgram) {
   if (!program.image) return 'art'
   return program.bannerOnPoster ? 'poster' : 'photo'
@@ -67,13 +65,13 @@ export default function Academics() {
   return (
     <>
       <section ref={sectionRef} className="academics page">
-        <h2 className="academics__title" data-reveal="letters" aria-label={ACADEMICS_TITLE}>
-          {ACADEMICS_TITLE.split('').map((letter, i) => (
-            <span key={i} className="academics__letter" style={{ '--c': i } as CSSProperties} aria-hidden="true">
-              {letter}
-            </span>
-          ))}
-        </h2>
+        <div className="academics__header">
+          <span className="academics__eyebrow">ACADEMICS</span>
+          <h2 className="academics__title">
+            <span className="academics-title-blue">Courses</span>{' '}
+            <span className="academics-title-gold">Offered</span>
+          </h2>
+        </div>
 
         <div
           ref={stageRef}
@@ -149,11 +147,6 @@ export default function Academics() {
 
       {/* Placement Section (New Reference Design) */}
       <section ref={placementRef} className="placement-section">
-        <div className="placement-section__dots-bottom" aria-hidden="true">
-          {[...Array(18)].map((_, i) => (
-            <span key={i} className="placement-section__dot" />
-          ))}
-        </div>
 
         <div className="placement-section__inner page">
           {/* Left Side: Campus Image & Dot Grid (NO yellow backdrop card) */}

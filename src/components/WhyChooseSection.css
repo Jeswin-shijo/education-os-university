@@ -313,3 +313,13 @@
   height: 100%;
   border: none;
 }
+
+@media (max-width: 768px) {
+  .why-choose {
+    padding: 36px 0;
+  }
+
+  .why-choose__grid {
+    gap: 28px;
+  }
+}

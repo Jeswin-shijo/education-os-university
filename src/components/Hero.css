@@ -3,6 +3,7 @@
   background-position: center top;
   background-repeat: no-repeat;
   position: relative;
+  background: #fff8e6;
 }
 
 .hero__inner {
@@ -424,7 +425,7 @@
 
 @media (max-width: 760px) {
   .hero__inner {
-    padding: 24px 16px 60px;
+    padding: 20px 16px 32px;
   }
 
   .hero__title {
@@ -433,11 +434,17 @@
   }
 
   .hero__campus {
-    font-size: 15px;
+    font-size: 14.5px;
+    margin-top: 10px;
   }
 
   .achievers {
-    height: 200px;
+    height: 190px;
+    margin-top: 16px;
+  }
+
+  .admission-card {
+    margin-top: 16px;
   }
 
   .admission__grid {
@@ -446,10 +453,12 @@
 
   .stats {
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
+    margin-top: -16px;
   }
 
   .stat-card {
-    flex: 1 1 calc(50% - 12px);
+    flex: 1 1 calc(50% - 10px);
+    height: 80px;
   }
 }
