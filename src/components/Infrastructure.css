@@ -20,19 +20,20 @@
   }
 }
 
-.infrastructure__container {
+/* Hide mobile stack on desktop */
+.infrastructure__mobile-stack {
+  display: none;
+}
+
+/* ====================================
+   DESKTOP VIEW (ORIGINAL ACCORDION STYLES)
+   ==================================== */
+.infrastructure__desktop-view {
   display: flex;
   height: 480px;
   gap: 16px;
   overflow: hidden;
   width: 100%;
-}
-
-@media (max-width: 640px) {
-  .infrastructure__container {
-    flex-direction: column;
-    height: auto;
-  }
 }
 
 .infrastructure__card {
@@ -101,4 +102,127 @@
   max-width: 500px;
   opacity: 0.95;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* ====================================
+   MOBILE VIEW (KULFI WEBSITE STACKED SLIDING CARDS DECK)
+   ==================================== */
+@media (max-width: 640px) {
+  .infrastructure__desktop-view {
+    display: none;
+  }
+
+  .infrastructure__mobile-stack {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 40px;
+  }
+
+  /* Each card is sticky and stacks over the previous card when scrolling */
+  .infra-mobile-card {
+    position: sticky;
+    top: calc(75px + var(--i) * 16px);
+    margin-bottom: 28px;
+    border-radius: 28px;
+    box-shadow: 0 -18px 40px -10px rgba(0, 0, 0, 0.45);
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+
+  /* Card Themes from Kulfi Website */
+  .infra-card--theme-1 {
+    background: linear-gradient(140deg, #f8cf7f 0%, #f0ab3c 70%);
+    color: #231610;
+  }
+
+  .infra-card--theme-2 {
+    background: linear-gradient(140deg, #fffaf1 0%, #efdcc2 100%);
+    color: #231610;
+  }
+
+  .infra-card--theme-3 {
+    background: linear-gradient(140deg, #3a1c19 0%, #22100d 100%);
+    color: #fffaf1;
+  }
+
+  .infra-card--theme-4 {
+    background: linear-gradient(140deg, #f3e6d5 0%, #ddccb6 100%);
+    color: #231610;
+  }
+
+  .infra-card--theme-5 {
+    background: linear-gradient(140deg, #2b1f1a 0%, #17100c 100%);
+    color: #fffaf1;
+  }
+
+  /* Metallic Gold Curved Top Header Tab Accent */
+  .infra-card-gold-tab {
+    width: calc(100% - 36px);
+    height: 22px;
+    margin: 0 auto -10px auto;
+    background: linear-gradient(90deg, #c4944d 0%, #e5be7a 50%, #ba8e4d 100%);
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Main Card Inner Body */
+  .infra-card-inner {
+    position: relative;
+    z-index: 2;
+    border-radius: 28px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  /* Pill Badge */
+  .infra-card-badge {
+    display: inline-block;
+    width: fit-content;
+    padding: 5px 14px;
+    border: 1.5px solid currentColor;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.2);
+    font-family: var(--font-sans);
+  }
+
+  .infra-card-title {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    line-height: 1.2;
+    font-family: var(--font-sans);
+  }
+
+  .infra-card-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    opacity: 0.92;
+    font-family: var(--font-sans);
+  }
+
+  /* Bottom Card Image Art */
+  .infra-card-art {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .infra-card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  }
 }
