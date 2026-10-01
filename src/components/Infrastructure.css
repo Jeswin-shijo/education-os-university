@@ -125,7 +125,6 @@
     top: calc(75px + var(--i) * 16px);
     margin-bottom: 28px;
     border-radius: 28px;
-    box-shadow: 0 -18px 40px -10px rgba(0, 0, 0, 0.45);
     transition: transform 0.3s ease, filter 0.3s ease;
   }
 
@@ -136,23 +135,23 @@
   }
 
   .infra-card--theme-2 {
-    background: linear-gradient(140deg, #fffaf1 0%, #efdcc2 100%);
+    background: linear-gradient(140deg, #e1b669 0%, #efdcc2 100%);
     color: #231610;
   }
 
   .infra-card--theme-3 {
-    background: linear-gradient(140deg, #3a1c19 0%, #22100d 100%);
-    color: #fffaf1;
+    background: linear-gradient(140deg, #c4a46a 0%, #efdcc2 100%);
+    color: #231610;
   }
 
   .infra-card--theme-4 {
-    background: linear-gradient(140deg, #f3e6d5 0%, #ddccb6 100%);
+    background: linear-gradient(140deg, #f8cf7f 0%, #f0ab3c 70%);
     color: #231610;
   }
 
   .infra-card--theme-5 {
-    background: linear-gradient(140deg, #2b1f1a 0%, #17100c 100%);
-    color: #fffaf1;
+     background: linear-gradient(140deg, #e1b669 0%, #efdcc2 100%);
+    color: #231610;
   }
 
   /* Metallic Gold Curved Top Header Tab Accent */

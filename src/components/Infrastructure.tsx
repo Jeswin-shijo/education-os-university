@@ -103,7 +103,7 @@ export default function Infrastructure() {
               className={`infra-mobile-card ${item.themeClass}`}
               style={{ '--i': index, zIndex: index + 1 } as React.CSSProperties}
             >
-              <div className="infra-card-gold-tab" />
+              {/* <div className="infra-card-gold-tab" /> */}
 
               <div className="infra-card-inner">
                 <span className="infra-card-badge">{item.modelCode}</span>
