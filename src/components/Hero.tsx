@@ -1,47 +1,75 @@
-import { useState, type FormEvent } from 'react'
-import { ArrowLeft, ArrowRight, ChevronDown, MapPin } from 'lucide-react'
+import { useState, useEffect, type FormEvent } from 'react'
+import { ArrowLeft, ArrowRight, ChevronDown, MapPin, User, Phone, Mail, GraduationCap } from 'lucide-react'
 import { achievers, admission, hero, stats } from '../data/siteData'
 import './Hero.css'
 
 function AchieverCarousel() {
-  const [start, setStart] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0)
   const count = achievers.length
-  const visible = achievers.map((_, i) => achievers[(start + i) % count])
+
+  // Automatic transition every 3.5 seconds
+  useEffect(() => {
+    if (count === 0) return
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % count)
+    }, 3500)
+    return () => clearInterval(timer)
+  }, [count])
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + count) % count)
+  }
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % count)
+  }
 
   return (
     <div className="achievers">
       <button
         type="button"
         className="achievers__arrow achievers__arrow--prev"
-        aria-label="Previous achievers"
-        onClick={() => setStart((s) => (s - 1 + count) % count)}
+        aria-label="Previous banner"
+        onClick={prevSlide}
       >
-        <ArrowLeft size={18} strokeWidth={2} />
+        <ArrowLeft size={16} strokeWidth={2.2} />
       </button>
 
-      <div className="achievers__track">
-        {visible.map((a) => (
-          <figure key={a.name} className="achiever-card">
-            <img src={a.image} alt="" />
-            <figcaption className="achiever-card__caption">
-              <span className="achiever-card__name">{a.name}</span>
-              <span className="achiever-card__talent">{a.talent}</span>
-            </figcaption>
-            <p className="achiever-card__score">
-              Also scored <strong>{a.score}</strong>
-            </p>
-          </figure>
+      <div className="achievers__slide-container">
+        {achievers.map((a, index) => (
+          <div
+            key={index}
+            className={`achiever-slide ${index === currentIndex ? 'achiever-slide--active' : ''}`}
+          >
+            <img
+              src={a.image}
+              alt={a.name || `Banner ${index + 1}`}
+              className="achiever-slide__img"
+            />
+          </div>
         ))}
       </div>
 
       <button
         type="button"
         className="achievers__arrow achievers__arrow--next"
-        aria-label="Next achievers"
-        onClick={() => setStart((s) => (s + 1) % count)}
+        aria-label="Next banner"
+        onClick={nextSlide}
       >
-        <ArrowRight size={18} strokeWidth={2} />
+        <ArrowRight size={16} strokeWidth={2.2} />
       </button>
+
+      <div className="achievers__dots">
+        {achievers.map((_, index) => (
+          <button
+            key={index}
+            type="button"
+            className={`achievers__dot ${index === currentIndex ? 'achievers__dot--active' : ''}`}
+            onClick={() => setCurrentIndex(index)}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
     </div>
   )
 }
@@ -50,59 +78,77 @@ function AdmissionForm() {
   const handleSubmit = (e: FormEvent) => e.preventDefault()
 
   return (
-    <form className="admission" onSubmit={handleSubmit}>
-      <div className="admission__head">
-        <span>Admission open for</span>
-        <label className="admission__year">
-          <span className="sr-only">Academic year</span>
-          <select defaultValue={admission.years[0]}>
-            {admission.years.map((y) => (
-              <option key={y}>{y}</option>
-            ))}
-          </select>
-          <ChevronDown size={11} strokeWidth={2.4} />
-        </label>
-      </div>
+    <div className="admission-card">
+      <form className="admission" onSubmit={handleSubmit}>
+        <div className="admission__head">
+          <span className="admission__head-title">Admission Open for</span>
+          <label className="admission__year">
+            <select defaultValue={admission.years[0]}>
+              {admission.years.map((y) => (
+                <option key={y}>{y}</option>
+              ))}
+            </select>
+            <ChevronDown size={13} strokeWidth={2.5} className="admission__year-arrow" />
+          </label>
+        </div>
 
-      <div className="admission__grid">
-        <label className="field">
-          <span className="field__label">
-            Parent Name <em>*</em>
-          </span>
-          <input type="text" placeholder="Parent Name*" />
-        </label>
-        <label className="field">
-          <span className="field__label">
-            Mobile Number <em>*</em>
-          </span>
-          <input type="tel" placeholder="Mobile*" />
-        </label>
-        <label className="field">
-          <span className="field__label">Email Address</span>
-          <input type="email" placeholder="Enter email address" />
-        </label>
-        <label className="field">
-          <span className="field__label">
-            Select Branch <em>*</em>
-          </span>
-          <select defaultValue={admission.branches[0]}>
-            {admission.branches.map((b) => (
-              <option key={b}>{b}</option>
-            ))}
-          </select>
-        </label>
-      </div>
+        <div className="admission__grid">
+          <label className="field">
+            <span className="field__label">
+              Student Name <em>*</em>
+            </span>
+            <div className="field__input-wrap">
+              <User size={15} className="field__icon" />
+              <input type="text" required placeholder="Student Name*" />
+            </div>
+          </label>
 
-      <div className="admission__city">
-        <MapPin size={13} fill="#e0435a" color="#e0435a" strokeWidth={0} />
-        <span className="admission__city-name">{admission.city}</span>
-        <a href="#">Click to change city</a>
-      </div>
+          <label className="field">
+            <span className="field__label">
+              Mobile Number <em>*</em>
+            </span>
+            <div className="field__input-wrap">
+              <Phone size={15} className="field__icon" />
+              <input type="tel" required placeholder="Mobile*" />
+            </div>
+          </label>
 
-      <button type="submit" className="admission__submit">
-        Enquire Now
-      </button>
-    </form>
+          <label className="field">
+            <span className="field__label">Email Address</span>
+            <div className="field__input-wrap">
+              <Mail size={15} className="field__icon" />
+              <input type="email" placeholder="Enter email address" />
+            </div>
+          </label>
+
+          <label className="field">
+            <span className="field__label">
+              Select Branch <em>*</em>
+            </span>
+            <div className="field__input-wrap">
+              <GraduationCap size={15} className="field__icon" />
+              <select defaultValue={admission.branches[0]}>
+                {admission.branches.map((b) => (
+                  <option key={b}>{b}</option>
+                ))}
+              </select>
+              <ChevronDown size={14} className="field__select-arrow" />
+            </div>
+          </label>
+        </div>
+
+        <div className="admission__city">
+          <MapPin size={14} className="admission__pin-icon" />
+          <span className="admission__city-name">{admission.city}</span>
+          <a href="#" className="admission__city-link">Click to change city</a>
+        </div>
+
+        <button type="submit" className="admission__submit">
+          <span>Enquire Now</span>
+          <ArrowRight size={18} />
+        </button>
+      </form>
+    </div>
   )
 }
 
@@ -120,6 +166,7 @@ export default function Hero() {
             <p className="hero__campus">
               {hero.campusPrompt}
               <span className="hero__divider">|</span>
+              <MapPin size={15} className="hero__pin-icon" />
               <strong>{hero.campusName}</strong>
             </p>
             <AchieverCarousel />

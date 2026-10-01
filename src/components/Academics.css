@@ -75,10 +75,7 @@
   overflow: hidden;
 
   transform:
-    translate(-50%, -50%)
-    translate(var(--x, 0), var(--y, 0))
-    rotate(var(--r, 0deg))
-    scale(var(--s, 1));
+    translate(-50%, -50%) translate(var(--x, 0), var(--y, 0)) rotate(var(--r, 0deg)) scale(var(--s, 1));
   z-index: var(--z, 1);
   transition:
     transform var(--fan-dur, 0.3s) var(--fan-ease, cubic-bezier(0.25, 1, 0.5, 1)),
@@ -89,7 +86,7 @@
   /* Gradient using card colours */
   background:
     linear-gradient(to bottom,
-      rgba(0,0,0,0) 30%, rgba(0,0,0,0.15) 53%, rgba(0,0,0,0.45) 75%, rgba(0,0,0,0.65) 100%),
+      rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.15) 53%, rgba(0, 0, 0, 0.45) 75%, rgba(0, 0, 0, 0.65) 100%),
     linear-gradient(150deg, var(--c1) 0%, var(--c2) 60%);
 
   box-shadow:
@@ -103,13 +100,15 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.28), rgba(255,255,255,0) 48%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0) 48%);
   opacity: 0;
   transition: opacity var(--fan-dur, 0.3s) ease;
   pointer-events: none;
 }
 
-.fan-card.is-hover::after { opacity: 1; }
+.fan-card.is-hover::after {
+  opacity: 1;
+}
 
 .fan-card.is-buried {
   box-shadow: none;
@@ -182,9 +181,9 @@
   z-index: 1;
   inset: 0;
   background: linear-gradient(160deg,
-    rgba(8, 26, 72, 0.6) 0%,
-    rgba(8, 26, 72, 0.2) 40%,
-    rgba(8, 26, 72, 0) 65%);
+      rgba(8, 26, 72, 0.6) 0%,
+      rgba(8, 26, 72, 0.2) 40%,
+      rgba(8, 26, 72, 0) 65%);
   pointer-events: none;
 }
 
@@ -239,86 +238,170 @@
   margin-top: 32px;
 }
 
+.pill-btn:hover {
+  background: var(--yellow);
+  transform: translateY(-1px);
+}
+
 /* ═══════════════════════════════════════════════════════════
-   PLACEMENT BANNER
+   PLACEMENT BANNER (NEW REFERENCE DESIGN)
    ═══════════════════════════════════════════════════════════ */
 
-.placement {
-  display: flex;
-  height: 475px;
-  margin-top: 60px;
-  padding: 0 34px 0 36px;
-}
-
-.placement__media {
-  flex: 0 0 761px;
+.placement-section {
+  padding: 100px 24px;
+  position: relative;
+  background: linear-gradient(135deg, #ffffff 0%, #fffef8 50%, #fff9e6 100%);
   overflow: hidden;
+  margin-top: 40px;
 }
 
-.placement__media[data-revealed] {
-  animation: placement-curtain 1.3s var(--ease-curtain) backwards;
+.placement-section__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 64px;
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.placement__media[data-revealed] img {
-  animation: reveal-settle 2s var(--ease-out) backwards;
+.placement-section__media-wrap {
+  flex: 1 1 540px;
+  max-width: 560px;
+  position: relative;
 }
 
-.placement__panel[data-revealed] {
-  --delay: 250ms;
-}
-
-.placement__panel[data-revealed] .placement__title span {
-  animation: reveal-blur-up 1s var(--ease-out) 550ms backwards;
-}
-
-.placement__panel[data-revealed] .placement__title span:nth-child(2) {
-  animation-delay: 680ms;
-}
-
-.placement__panel[data-revealed] .pill-btn {
-  animation: reveal-pop 0.7s var(--ease-back) 900ms backwards;
-}
-
-@keyframes placement-curtain {
-  from {
-    clip-path: inset(0 100% 0 0);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-.placement__media img {
+.placement-section__media {
+  position: relative;
+  z-index: 2;
   width: 100%;
-  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.18);
+}
+
+.placement-section__media img {
+  width: 100%;
+  height: 380px;
   object-fit: cover;
+  display: block;
 }
 
-.placement__panel {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
+/* Dots Grid Decorations */
+.placement-section__dots-top {
+  position: absolute;
+  top: -32px;
+  left: -20px;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: repeat(6, 6px);
+  gap: 8px;
+}
+
+.placement-section__dots-bottom {
+  position: absolute;
+  bottom: 24px;
+  right: 60px;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(6, 6px);
+  gap: 8px;
+}
+
+.placement-section__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #f59e0b;
+}
+
+/* Right Content */
+.placement-section__content {
+  flex: 1 1 480px;
+  max-width: 520px;
+}
+
+.placement-section__accent-line {
+  width: 48px;
+  height: 4px;
+  background-color: #eab308;
+  border-radius: 4px;
+  margin-bottom: 24px;
+}
+
+.placement-section__title {
+  font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  font-family: var(--font-sans);
+  letter-spacing: -0.02em;
+}
+
+.placement-title-blue {
+  color: #001f54;
+  display: block;
+}
+
+.placement-title-gold {
+  color: #eab308;
+  display: block;
+}
+
+.placement-section__desc {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #4b5563;
+  margin-bottom: 32px;
+  font-family: var(--font-sans);
+}
+
+/* Pill CTA Button with Gold Ring Glow */
+.placement-section__cta {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding-top: 29px;
-  background: linear-gradient(180deg, #fef8de 0%, #fff1bd 22%, #fcea89 50%, #fedd37 78%, #fddb1c 100%);
+  gap: 12px;
+  padding: 14px 32px;
+  border-radius: 999px;
+  background: #001f54;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: all 0.25s ease;
+  font-family: var(--font-sans);
 }
 
-.placement__title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 49px;
-  font-weight: 400;
-  line-height: 55px;
-  letter-spacing: -0.6px;
-  color: #2a4494;
-  text-align: center;
+.placement-section__cta:hover {
+  background: var(--yellow);
+  transform: translateY(-2px)
 }
 
-.placement__panel .pill-btn {
-  margin-top: 44px;
-  width: 147px;
+@media (max-width: 960px) {
+  .placement-section__inner {
+    flex-direction: column;
+    gap: 48px;
+    text-align: center;
+  }
+
+  .placement-section__media-wrap {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .placement-section__media img {
+    height: 280px;
+  }
+
+  .placement-section__content {
+    max-width: 100%;
+  }
+
+  .placement-section__accent-line {
+    margin: 0 auto 20px auto;
+  }
 }
 
 /* Scroll-linked depth where supported */
@@ -343,6 +426,7 @@
   from {
     translate: 0 -4%;
   }
+
   to {
     translate: 0 4%;
   }

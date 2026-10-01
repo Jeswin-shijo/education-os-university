@@ -1,28 +1,33 @@
 .hero {
-  background: var(--pink-bg);
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
 .hero__inner {
   display: flex;
   align-items: flex-start;
-  gap: 19px;
-  padding: 32px 38px 72px 32px;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 36px 32px 72px 32px;
 }
 
 .hero__main {
-  flex: 0 1 751px;
+  flex: 1 1 640px;
+  max-width: 680px;
   min-width: 0;
-  padding-top: 12px;
+  padding-top: 4px;
 }
 
 .hero__title {
-  max-width: 700px;
-  padding-left: 1px;
-  font-size: 29px;
-  font-weight: 700;
-  line-height: 34px;
-  letter-spacing: -0.05px;
-  color: #000;
+  max-width: 650px;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 38px;
+  letter-spacing: -0.3px;
+  color: #091e42;
+  font-family: var(--font-sans);
 }
 
 .hero__title span {
@@ -30,17 +35,23 @@
 }
 
 .hero__campus {
-  margin-top: 22px;
-  padding-left: 1px;
-  font-size: 17.4px;
+  margin-top: 14px;
+  font-size: 16px;
   line-height: 24px;
-  color: #4a4a4a;
-  letter-spacing: -0.1px;
+  color: #4b5563;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .hero__divider {
-  margin: 0 6px;
-  color: #222;
+  margin: 0 4px;
+  color: #9ca3af;
+}
+
+.hero__pin-icon {
+  color: #d97706;
+  fill: #fef3c7;
 }
 
 .hero__campus strong {
@@ -48,137 +59,152 @@
   color: #8f0a27;
 }
 
-/* Achiever carousel */
+/* Achiever / Banner Carousel */
 .achievers {
   position: relative;
-  margin-top: 25px;
-  height: 245px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #ffe866 0%, #fee03c 45%, #fdda0e 100%);
-  box-shadow: 0 10px 24px rgba(200, 160, 0, 0.18);
-}
-
-.achievers__track {
-  display: flex;
-  justify-content: center;
-  gap: 82px;
-  padding-top: 24px;
-}
-
-.achiever-card {
-  position: relative;
-  margin: 0;
-  width: 161px;
-  height: 197px;
-  border-radius: 9px;
+  margin-top: 24px;
+  height: 260px;
+  border-radius: 20px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  padding: 0;
   overflow: hidden;
-  box-shadow: 0 5px 12px rgba(140, 100, 0, 0.28);
-  animation: card-in 0.35s ease;
+  background: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.8);
 }
 
-.achiever-card img {
+.achievers__slide-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.achiever-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.98);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.achiever-slide--active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  z-index: 2;
+}
+
+.achiever-slide__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.achiever-card__caption {
-  position: absolute;
-  top: 16px;
-  left: 19px;
-  right: 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  white-space: nowrap;
-}
-
-.achiever-card__name {
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 13px;
-  letter-spacing: -0.1px;
-  color: #b01c2e;
-}
-
-.achiever-card__talent {
-  font-size: 9px;
-  line-height: 11px;
-  color: #262626;
-}
-
-.achiever-card__score {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 173px;
-  font-size: 9.5px;
-  line-height: 11px;
-  text-align: center;
-  color: #4d4100;
-}
-
-.achiever-card__score strong {
-  font-weight: 700;
-  color: #111;
-}
-
-@keyframes card-in {
-  from {
-    opacity: 0.4;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+  border-radius: 18px;
+  display: block;
 }
 
 .achievers__arrow {
   position: absolute;
   top: 50%;
+  z-index: 10;
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  color: #fff;
-  background: radial-gradient(circle at 50% 45%, #a4092e 0%, #8a0220 70%);
-  box-shadow: 0 4px 10px rgba(120, 0, 25, 0.35);
-  transform: translate(-50%, -50%);
-  transition: transform 0.2s ease;
+  color: #091e42;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-50%);
+  transition: transform 0.2s ease, background 0.2s ease;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .achievers__arrow:hover {
-  transform: translate(-50%, -50%) scale(1.06);
+  transform: translateY(-50%) scale(1.08);
+  background: #f8fafc;
+  color: #001f54;
 }
 
 .achievers__arrow--prev {
-  left: 0;
+  left: 12px;
 }
 
 .achievers__arrow--next {
-  left: 100%;
+  right: 12px;
 }
 
-/* Admission form */
+.achievers__dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+
+.achievers__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.achievers__dot--active {
+  width: 22px;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+/* ====================================
+   ADMISSION FORM CARD (MATCHING REFERENCE IMAGE)
+   ==================================== */
+.admission-card {
+  flex: 0 0 450px;
+  margin-left: auto;
+  position: relative;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
 .admission {
-  flex: 0 0 526px;
-  min-height: 409px;
-  padding: 5px 7px 16px 7px;
-  border-radius: 12px;
-  background: #fff;
+  padding: 24px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
 }
 
 .admission__head {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  height: 24px;
-  font-size: 14.7px;
-  font-weight: 700;
-  color: #000;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.admission__head-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: #091e42;
+  font-family: var(--font-sans);
 }
 
 .admission__year {
@@ -189,119 +215,154 @@
 
 .admission__year select {
   appearance: none;
-  height: 22px;
-  padding: 0 26px 0 12px;
-  border: 1.3px solid #222;
-  border-radius: 12px;
-  background: #fff;
-  font-size: 16px;
-  font-weight: 700;
+  height: 32px;
+  padding: 0 28px 0 14px;
+  border: 1.5px solid #d97706;
+  border-radius: 999px;
+  background: #ffffff;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #091e42;
   cursor: pointer;
+  outline: none;
 }
 
-.admission__year svg {
+.admission__year-arrow {
   position: absolute;
   right: 10px;
-  color: #a00026;
+  color: #d97706;
   pointer-events: none;
 }
 
+/* Grid & Inputs */
 .admission__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px 15px;
-  margin-top: 18px;
+  gap: 14px;
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 5px;
 }
 
 .field__label {
-  height: 17px;
-  padding-left: 1px;
   font-size: 11.5px;
   font-weight: 700;
-  color: #000;
+  color: #1e293b;
 }
 
 .field__label em {
   font-style: normal;
-  color: #c8102e;
+  color: #dc2626;
   margin-left: 2px;
+}
+
+.field__input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.field__icon {
+  position: absolute;
+  left: 12px;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.field__select-arrow {
+  position: absolute;
+  right: 12px;
+  color: #94a3b8;
+  pointer-events: none;
 }
 
 .field input,
 .field select {
   width: 100%;
-  height: 43px;
-  padding: 0 15px;
-  border: 1.5px solid #858585;
-  border-radius: 6px;
-  background: #fff;
-  font-size: 15.5px;
-  color: #111;
+  height: 42px;
+  padding: 0 12px 0 36px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 13.5px;
+  color: #0f172a;
   outline: none;
-  transition: border-color 0.15s ease;
+  transition: all 0.2s ease;
+  font-family: var(--font-sans);
 }
 
 .field select {
-  padding: 0 8px 0 3px;
-  font-size: 14.5px;
+  appearance: none;
   cursor: pointer;
+  padding-right: 30px;
 }
 
 .field input::placeholder {
-  color: #737373;
+  color: #94a3b8;
 }
 
 .field input:focus,
 .field select:focus {
-  border-color: var(--maroon);
+  border-color: #091e42;
+  box-shadow: 0 0 0 3px rgba(9, 30, 66, 0.1);
 }
 
+/* Location Bar matching reference image */
 .admission__city {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  height: 37px;
-  margin-top: 23px;
-  border: 1px solid #e3e3e3;
-  border-radius: 6px;
-  background: #fafafa;
+  gap: 8px;
+  padding: 10px 16px;
+  margin-top: 16px;
+  border-radius: 10px;
+  background: #fff8e6;
+  border: 1px solid #fef3c7;
+  font-size: 13px;
+}
+
+.admission__pin-icon {
+  color: #d97706;
+  flex-shrink: 0;
 }
 
 .admission__city-name {
-  font-size: 13px;
-  font-weight: 400;
-  color: #222;
+  color: #1e293b;
+  font-weight: 700;
 }
 
-.admission__city a {
-  margin-left: 8px;
-  font-size: 10px;
+.admission__city-link {
+  font-size: 12px;
   font-weight: 700;
-  color: #8f0a27;
+  color: #d97706;
   text-decoration: underline;
 }
 
+/* Submit Button matching reference image */
 .admission__submit {
   width: 100%;
-  height: 44px;
-  margin-top: 10px;
-  border-radius: 4px;
-  background: var(--maroon);
-  color: #fff;
-  font-size: 14.5px;
+  height: 46px;
+  margin-top: 16px;
+  border-radius: 8px;
+  background: #001f54;
+  color: #ffffff;
+  font-size: 15px;
   font-weight: 700;
-  transition: background-color 0.2s ease;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .admission__submit:hover {
-  background: #86001f;
+  background: var(--yellow);
+  transform: translateY(-1px);
 }
 
 /* Stats strip */
@@ -353,13 +414,11 @@
   }
 
   .hero__main,
-  .admission {
+  .admission-card {
     flex: none;
-  }
-
-  .admission {
-    min-height: 0;
-    padding: 14px 16px 18px;
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
   }
 }
 
@@ -369,33 +428,16 @@
   }
 
   .hero__title {
-    font-size: 23px;
-    line-height: 29px;
+    font-size: 24px;
+    line-height: 30px;
   }
 
   .hero__campus {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .achievers {
-    height: auto;
-    padding-bottom: 24px;
-    margin-left: 12px;
-    margin-right: 12px;
-  }
-
-  .achievers__track {
-    gap: 12px;
-    padding: 24px 28px 0;
-    overflow: hidden;
-  }
-
-  .achiever-card {
-    flex: 0 0 161px;
-  }
-
-  .achiever-card:not(:first-child) {
-    display: none;
+    height: 200px;
   }
 
   .admission__grid {

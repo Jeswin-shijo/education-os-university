@@ -55,15 +55,7 @@ export default function WhyChooseSection() {
 
             <div className="why-choose__description">
               <p>
-                The Dhanalakshmi Srinivasan University (DSU) has been established
-                under the Tamil Nadu Private Universities Act, 2019, located in
-                Tiruchirappali, Tamil Nadu, India. Uniqueness of DSU lies in its
-                multi-disciplinary nature in offering a wide range of academic
-                programmes encompassing medicine and engineering. Our motto is
-                &quot;education for the real world&quot; with dedication and commitment
-                towards nurturing the future generation. Green ambience with
-                state-of-the-art infrastructure along with top-class faculty aims
-                to serve the need of national and international students.
+                Dhanalakshmi Srinivasan University (DSU) is a multidisciplinary university in Tiruchirappalli, Tamil Nadu, offering diverse programmes in medicine, engineering, and more. With modern infrastructure, a green campus, and experienced faculty, DSU is committed to “Education for the Real World” and nurturing future-ready professionals.
               </p>
             </div>
 

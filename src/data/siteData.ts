@@ -1,10 +1,10 @@
 import logo from '../assets/images/logo.png'
 import footerLogo from '../assets/images/footer-logo.png'
-import student1 from '../assets/images/student-1.png'
-import student2 from '../assets/images/student-2.png'
-import student3 from '../assets/images/student-3.png'
+import student1 from '../assets/images/banner_1.jpg'
+import student2 from '../assets/images/banner_2.jpg'
+import student3 from '../assets/images/banner_3.jpg'
 import videoThumb from '../assets/images/video-thumb.jpg'
-import founderPhoto from '../assets/images/ayya.png'
+import founderPhoto from '../assets/images/ayya_.png'
 import conclave from '../assets/images/conclave.png'
 import pubBrochure from '../assets/images/pub-brochure.jpg'
 import pubMagazine from '../assets/images/pub-magazine.jpg'
@@ -45,6 +45,8 @@ export const images = {
   campusAerial,
   campusDecoLeft,
   campusDecoRight,
+  pubBrochure,
+  pubMagazine,
 }
 
 export const university = {
@@ -92,8 +94,8 @@ export const achievers: Achiever[] = [
 
 export const admission = {
   years: ['2027-28', '2026-27'],
-  branches: ['OIS Vilankurichi', 'OIS Saravanampatti', 'OIS Kalapatti', 'OIS Peelamedu'],
-  city: 'Coimbatore',
+  branches: ['DSU Trichy', 'DSU Chennai'],
+  city: 'Chennai',
 }
 
 export interface Stat {
@@ -102,23 +104,23 @@ export interface Stat {
 }
 
 export const stats: Stat[] = [
-  { value: '130+', label: 'Acres of Campus' },
-  { value: '80+', label: 'Multimedia Classrooms' },
-  { value: '760K+', label: 'Book Volumes' },
-  { value: '250+', label: 'Recruiters' },
+  { value: '100+', label: 'Acres Campus' },
+  { value: '50+', label: 'Programs' },
+  { value: '5000+', label: 'Students' },
+  { value: '500+', label: 'Faculty' },
 ]
 
 export const videoSection = {
   title: 'Why Dhanalakshmi Srinivasan University',
   description:
-    'The Dhanalakshmi Srinivasan University (DSU) has been established under the Tamil Nadu Private Universities Act, 2019, located in Tiruchirappali, Tamil Nadu, India. Uniqueness of DSU lies in its multi-disciplinary nature in offering a wide range of academic programmes encompassing medicine and engineering. Our motto is "education for the real world" with dedication and commitment towards nurturing the future generation. Green ambience with state-of-the-art infrastructure along with top-class faculty aims to serve the need of national and international students.',
+    'Dhanalakshmi Srinivasan University (DSU) is a multidisciplinary university in Tiruchirappalli, Tamil Nadu, offering diverse programmes in medicine, engineering, and more. With modern infrastructure, a green campus, and experienced faculty, DSU is committed to “Education for the Real World” and nurturing future-ready professionals.',
   cta: 'Enquire Now',
 }
 
 export const founder = {
   eyebrow: 'Founder-Chancellor DSU',
   titleLines: ['Founder Message'],
-  quote:'Education is an instrument to create a knowledge society. India moves ahead in the path of giving education to all sections of population across the nation. Provision of an opportunity to pursue higher education to all eligible candidates would pave way for holistic development.', 
+  quote: 'Education is an instrument to create a knowledge society. India moves ahead in the path of giving education to all sections of population across the nation. Provision of an opportunity to pursue higher education to all eligible candidates would pave way for holistic development.',
   name: 'Shri. A. Srinivasan',
   role: 'Founder & Chancellor',
   org: ''

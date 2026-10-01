@@ -147,19 +147,50 @@ export default function Academics() {
         </div>
       </section>
 
-      <section ref={placementRef} className="placement page">
-        <div className="placement__media" data-reveal="curtain">
-          <img src={images.campusAerial} alt="Aerial view of the Dhanalakshmi Srinivasan University campus" />
+      {/* Placement Section (New Reference Design) */}
+      <section ref={placementRef} className="placement-section">
+        <div className="placement-section__dots-bottom" aria-hidden="true">
+          {[...Array(18)].map((_, i) => (
+            <span key={i} className="placement-section__dot" />
+          ))}
         </div>
-        <div className="placement__panel" data-reveal="right">
-          <h2 className="placement__title">
-            {placement.titleLines.map((line) => (
-              <span key={line}>{line}</span>
-            ))}
-          </h2>
-          <a href="#" className="pill-btn">
-            Read More <ArrowRight size={17} strokeWidth={2} />
-          </a>
+
+        <div className="placement-section__inner page">
+          {/* Left Side: Campus Image & Dot Grid (NO yellow backdrop card) */}
+          <div className="placement-section__media-wrap" data-reveal="curtain">
+            {/* <div className="placement-section__dots-top" aria-hidden="true">
+              {[...Array(18)].map((_, i) => (
+                <span key={i} className="placement-section__dot" />
+              ))}
+            </div> */}
+
+            <div className="placement-section__media">
+              <img
+                src={images.campusAerial}
+                alt="Aerial view of Dhanalakshmi Srinivasan University campus"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          {/* Right Side: Heading, Description & READ MORE Button */}
+          <div className="placement-section__content" data-reveal="right">
+            <div className="placement-section__accent-line" />
+
+            <h2 className="placement-section__title">
+              <span className="placement-title-blue">Placement Success</span>
+              <span className="placement-title-gold">Starts Here</span>
+            </h2>
+
+            <p className="placement-section__desc">
+              Industry-ready programs, expert guidance and strong recruiter network to shape your future.
+            </p>
+
+            <a href="#recruiters" className="placement-section__cta">
+              <span>READ MORE</span>
+              <ArrowRight size={18} />
+            </a>
+          </div>
         </div>
       </section>
     </>
