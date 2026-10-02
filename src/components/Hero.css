@@ -1,369 +1,88 @@
-.hero {
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  position: relative;
-  background: #fff8e6;
-}
-
-.hero__inner {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 32px;
-  padding: 36px 32px 72px 32px;
-}
-
-.hero__main {
-  flex: 1 1 640px;
-  max-width: 680px;
-  min-width: 0;
-  padding-top: 4px;
-}
-
-.hero__title {
-  max-width: 650px;
-  font-size: 32px;
-  font-weight: 800;
-  line-height: 38px;
-  letter-spacing: -0.3px;
-  color: #091e42;
-  font-family: var(--font-sans);
-}
-
-.hero__title span {
-  color: #9b0a2a;
-}
-
-.hero__campus {
-  margin-top: 14px;
-  font-size: 16px;
-  line-height: 24px;
-  color: #4b5563;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.hero__divider {
-  margin: 0 4px;
-  color: #9ca3af;
-}
-
-.hero__pin-icon {
-  color: #d97706;
-  fill: #fef3c7;
-}
-
-.hero__campus strong {
-  font-weight: 700;
-  color: #8f0a27;
-}
-
-/* Achiever / Banner Carousel */
-.achievers {
-  position: relative;
-  margin-top: 24px;
-  height: 260px;
-  border-radius: 20px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-  padding: 0;
-  overflow: hidden;
-  background: #ffffff;
-  border: 2px solid rgba(255, 255, 255, 0.8);
-}
-
-.achievers__slide-container {
+/* Full Width Background Hero Section */
+.hero-fullvideo {
   position: relative;
   width: 100%;
-  height: 100%;
-  border-radius: 18px;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
   overflow: hidden;
+  background: #091e42;
 }
 
-.achiever-slide {
+.hero-fullvideo__bg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  visibility: hidden;
-  transform: scale(0.98);
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-}
-
-.achiever-slide--active {
-  opacity: 1;
-  visibility: visible;
-  transform: scale(1);
-  z-index: 2;
-}
-
-.achiever-slide__img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
-  border-radius: 18px;
-  display: block;
+  z-index: 1;
 }
 
-.achievers__arrow {
+/* Top Left Logo Overlay */
+.hero-fullvideo__top-left {
   position: absolute;
-  top: 50%;
+  top: 24px;
+  left: 32px;
   z-index: 10;
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  color: #091e42;
-  background: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transform: translateY(-50%);
-  transition: transform 0.2s ease, background 0.2s ease;
-  cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.achievers__arrow:hover {
-  transform: translateY(-50%) scale(1.08);
-  background: #f8fafc;
-  color: #001f54;
-}
-
-.achievers__arrow--prev {
-  left: 12px;
-}
-
-.achievers__arrow--next {
-  right: 12px;
-}
-
-.achievers__dots {
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
-  gap: 8px;
-  z-index: 10;
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(4px);
-  padding: 5px 12px;
+  align-items: center;
+}
+
+.hero-fullvideo__logo {
+  height: 44px;
+  width: auto;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+}
+
+/* Cute Audio Toggle Button ("Kutty Icon") */
+.hero-video__audio-btn {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
   border-radius: 999px;
-}
-
-.achievers__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  border: none;
+  background: rgba(9, 30, 66, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
   cursor: pointer;
-  padding: 0;
-  transition: all 0.3s ease;
-}
-
-.achievers__dot--active {
-  width: 22px;
-  border-radius: 10px;
-  background: #ffffff;
-}
-
-/* ====================================
-   ADMISSION FORM CARD (MATCHING REFERENCE IMAGE)
-   ==================================== */
-.admission-card {
-  flex: 0 0 450px;
-  margin-left: auto;
-  position: relative;
-  background: #ffffff;
-  border-radius: 18px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  overflow: hidden;
-}
-
-.admission {
-  padding: 24px 24px 24px 24px;
-  display: flex;
-  flex-direction: column;
-}
-
-.admission__head {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.admission__head-title {
-  font-size: 17px;
-  font-weight: 800;
-  color: #091e42;
-  font-family: var(--font-sans);
-}
-
-.admission__year {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-}
-
-.admission__year select {
-  appearance: none;
-  height: 32px;
-  padding: 0 28px 0 14px;
-  border: 1.5px solid #d97706;
-  border-radius: 999px;
-  background: #ffffff;
-  font-size: 13.5px;
-  font-weight: 800;
-  color: #091e42;
-  cursor: pointer;
-  outline: none;
-}
-
-.admission__year-arrow {
-  position: absolute;
-  right: 10px;
-  color: #d97706;
-  pointer-events: none;
-}
-
-/* Grid & Inputs */
-.admission__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.field__label {
-  font-size: 11.5px;
-  font-weight: 700;
-  color: #1e293b;
-}
-
-.field__label em {
-  font-style: normal;
-  color: #dc2626;
-  margin-left: 2px;
-}
-
-.field__input-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.field__icon {
-  position: absolute;
-  left: 12px;
-  color: #94a3b8;
-  pointer-events: none;
-}
-
-.field__select-arrow {
-  position: absolute;
-  right: 12px;
-  color: #94a3b8;
-  pointer-events: none;
-}
-
-.field input,
-.field select {
-  width: 100%;
-  height: 42px;
-  padding: 0 12px 0 36px;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  background: #ffffff;
-  font-size: 13.5px;
-  color: #0f172a;
-  outline: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease;
-  font-family: var(--font-sans);
 }
 
-.field select {
-  appearance: none;
-  cursor: pointer;
-  padding-right: 30px;
+.hero-video__audio-btn:hover {
+  background: #9b0a2a;
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.06);
 }
 
-.field input::placeholder {
-  color: #94a3b8;
-}
-
-.field input:focus,
-.field select:focus {
-  border-color: #091e42;
-  box-shadow: 0 0 0 3px rgba(9, 30, 66, 0.1);
-}
-
-/* Location Bar matching reference image */
-.admission__city {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 16px;
-  margin-top: 16px;
-  border-radius: 10px;
-  background: #fff8e6;
-  border: 1px solid #fef3c7;
-  font-size: 13px;
-}
-
-.admission__pin-icon {
-  color: #d97706;
-  flex-shrink: 0;
-}
-
-.admission__city-name {
-  color: #1e293b;
-  font-weight: 700;
-}
-
-.admission__city-link {
+.hero-video__audio-tooltip {
   font-size: 12px;
   font-weight: 700;
-  color: #d97706;
-  text-decoration: underline;
+  letter-spacing: 0.3px;
 }
 
-/* Submit Button matching reference image */
-.admission__submit {
-  width: 100%;
-  height: 46px;
-  margin-top: 16px;
-  border-radius: 8px;
+/* Blue Ribbon Tag matching reference image */
+.hero-fullvideo__tag {
+  position: absolute;
+  bottom: 24px;
+  right: 32px;
+  z-index: 10;
   background: #001f54;
   color: #ffffff;
   font-size: 15px;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-.admission__submit:hover {
-  background: var(--yellow);
-  transform: translateY(-1px);
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  padding: 12px 24px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  border-left: 5px solid #f59e0b;
+  transition: all 0.3s ease;
 }
 
 /* Stats strip */
@@ -371,10 +90,10 @@
   display: flex;
   justify-content: center;
   gap: 21px;
-  margin-top: -28px;
+  margin-top: -36px;
   padding: 0 16px;
   position: relative;
-  z-index: 1;
+  z-index: 10;
 }
 
 .stat-card {
@@ -386,7 +105,7 @@
   height: 90px;
   border-radius: 10px;
   background: #fff;
-  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
 .stat-card__value {
@@ -408,53 +127,38 @@
 }
 
 @media (max-width: 1180px) {
-  .hero__inner {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 28px 24px 64px;
-  }
-
-  .hero__main,
-  .admission-card {
-    flex: none;
-    width: 100%;
-    max-width: 100%;
-    margin-left: 0;
+  .hero-fullvideo__tag {
+    bottom: 16px;
+    right: 16px;
+    font-size: 13px;
+    padding: 8px 16px;
   }
 }
 
 @media (max-width: 760px) {
-  .hero__inner {
-    padding: 20px 16px 32px;
+  .hero-fullvideo {
+    min-height: 380px;
   }
 
-  .hero__title {
-    font-size: 24px;
-    line-height: 30px;
+  .hero-fullvideo__top-left {
+    top: 14px;
+    left: 16px;
   }
 
-  .hero__campus {
-    font-size: 14.5px;
-    margin-top: 10px;
+  .hero-video__audio-btn {
+    top: 14px;
+    right: 16px;
+    padding: 6px 10px;
   }
 
-  .achievers {
-    height: 190px;
-    margin-top: 16px;
-  }
-
-  .admission-card {
-    margin-top: 16px;
-  }
-
-  .admission__grid {
-    grid-template-columns: 1fr;
+  .hero-fullvideo__tag {
+    display: none;
   }
 
   .stats {
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: -16px;
+    margin-top: -20px;
   }
 
   .stat-card {
