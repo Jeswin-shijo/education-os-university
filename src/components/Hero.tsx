@@ -1,7 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { Volume2, VolumeX } from 'lucide-react'
 import campusVideo from '../assets/images/video.mp4'
-import logo from '../assets/images/logo.png'
 import { stats } from '../data/siteData'
 import './Hero.css'
 
@@ -44,22 +42,40 @@ function HeroVideoSection() {
         className="hero-fullvideo__bg"
       />
 
-      {/* Top Left Logo */}
-      <div className="hero-fullvideo__top-left">
-        <img src={logo} alt="DSU Logo" className="hero-fullvideo__logo" />
-      </div>
+      {/* Full screen rgba(0,0,0,0.60) dark background block overlay */}
+      <div className="hero-fullvideo__overlay" />
 
-      {/* Cute Audio Toggle Button ("Kutty Icon") */}
+      {/* Animated Equalizer Sound Button ("Sound On / Sound Off") matching reference image */}
       <button
         type="button"
-        className="hero-video__audio-btn"
+        className={`hero-video__sound-btn ${muted ? 'is-muted' : 'is-active'}`}
         onClick={toggleMute}
-        aria-label={muted ? 'Enable Audio' : 'Mute Audio'}
-        title={muted ? 'Click to Enable Audio' : 'Click to Mute Audio'}
+        aria-label={muted ? 'Enable Sound' : 'Mute Sound'}
+        title={muted ? 'Click to Enable Sound' : 'Click to Mute Sound'}
       >
-        {muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
-        <span className="hero-video__audio-tooltip">{muted ? 'Unmute' : 'Muted'}</span>
+        <div className="sound-wave">
+          <span className="sound-bar bar-1" />
+          <span className="sound-bar bar-2" />
+          <span className="sound-bar bar-3" />
+          <span className="sound-bar bar-4" />
+        </div>
       </button>
+
+      {/* Left side text title block over full video overlay */}
+      {/* <div className="hero-fullvideo__text-card">
+        <span className="hero-section__eyebrow">ADMISSIONS OPEN 2026-27</span>
+
+        <h1 className="hero-fullvideo__title">
+          {hero.titleParts.map((p) =>
+            p.highlight ? <span key={p.text}>{p.text}</span> : p.text,
+          )}
+        </h1>
+
+        <p className="hero-fullvideo__campus">
+          <MapPin size={15} className="hero-fullvideo__pin" />
+          <strong>{hero.campusName}</strong>
+        </p>
+      </div> */}
 
       {/* Bottom Right Blue Ribbon Tag matching screenshot */}
       <div className="hero-fullvideo__tag">

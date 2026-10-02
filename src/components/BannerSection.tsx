@@ -1,7 +1,16 @@
 import { useState, useEffect, type FormEvent } from 'react'
 import { ArrowLeft, ArrowRight, ChevronDown, MapPin, User, Phone, Mail, GraduationCap } from 'lucide-react'
-import { achievers, admission } from '../data/siteData'
+import banner1 from '../assets/images/banner_1.jpg'
+import banner2 from '../assets/images/banner_2.jpg'
+import banner3 from '../assets/images/banner_3.jpg'
+import { admission } from '../data/siteData'
 import './BannerSection.css'
+
+const banners = [
+  { id: 1, image: banner2, title: '1st HCSET April 29 & 30, 2026' },
+  { id: 2, image: banner1, title: 'Intellixverse 2026 Technical Symposium' },
+  { id: 3, image: banner3, title: 'Aura 26 Mega Cultural Celebrations' },
+]
 
 function AdmissionForm() {
   const handleSubmit = (e: FormEvent) => e.preventDefault()
@@ -24,11 +33,11 @@ function AdmissionForm() {
         <div className="admission__grid">
           <label className="field">
             <span className="field__label">
-              Student Name <em>*</em>
+              Parent Name <em>*</em>
             </span>
             <div className="field__input-wrap">
               <User size={15} className="field__icon" />
-              <input type="text" required placeholder="Student Name*" />
+              <input type="text" required placeholder="Parent Name*" />
             </div>
           </label>
 
@@ -56,10 +65,14 @@ function AdmissionForm() {
             </span>
             <div className="field__input-wrap">
               <GraduationCap size={15} className="field__icon" />
-              <select defaultValue={admission.branches[0]}>
-                {admission.branches.map((b) => (
-                  <option key={b}>{b}</option>
-                ))}
+              <select defaultValue="">
+                {admission.branches
+                  .filter((b) => b !== 'DSU Trichy' && b !== 'DSU Chennai')
+                  .map((b) => (
+                    <option key={b} value={b}>
+                      {b}
+                    </option>
+                  ))}
               </select>
               <ChevronDown size={14} className="field__select-arrow" />
             </div>
@@ -69,6 +82,9 @@ function AdmissionForm() {
         <div className="admission__city">
           <MapPin size={14} className="admission__pin-icon" />
           <span className="admission__city-name">{admission.city}</span>
+          <button type="button" className="admission__city-link">
+            Click to change city
+          </button>
         </div>
 
         <button type="submit" className="admission__submit">
@@ -83,13 +99,13 @@ function AdmissionForm() {
 export default function BannerSection() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
-  const count = achievers.length
+  const count = banners.length
 
   useEffect(() => {
     if (count === 0 || isHovered) return
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % count)
-    }, 4000)
+    }, 4500)
     return () => clearInterval(timer)
   }, [count, isHovered])
 
@@ -102,88 +118,93 @@ export default function BannerSection() {
   }
 
   return (
-    <section className="banner-section page" aria-label="Campus Banners Showcase">
-      <div className="banner-section__header">
-        <span className="banner-section__eyebrow">CAMPUS SHOWCASE</span>
-        <h2 className="banner-section__title">
-          <span className="title-blue">Life & Excellence</span>{' '}
-          <span className="title-gold">at Dhanalakshmi Srinivasan University</span>
-        </h2>
-        <p className="banner-section__subtitle">
-          Explore our vibrant campus environment, modern infrastructure, and student achievements.
-        </p>
-      </div>
+    <section className="banner-section" aria-label="Campus Banners Showcase">
+      {/* Background Building Image on the Right (blends behind Admission Card) */}
+      {/* <div className="banner-section__building-bg">
+        <img src={campusBuilding} alt="DSU Campus Architecture" className="banner-section__building-img" />
+      </div> */}
 
-      <div className="banner-section__flex">
-        {/* Banner Carousel Slider */}
-        <div
-          className="banner-carousel"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          <button
-            type="button"
-            className="banner-carousel__arrow banner-carousel__arrow--prev"
-            aria-label="Previous banner"
-            onClick={prevSlide}
-          >
-            <ArrowLeft size={18} strokeWidth={2.2} />
-          </button>
-
-          <div className="banner-carousel__slides">
-            {achievers.map((item, index) => (
-              <div
-                key={index}
-                className={`banner-slide ${index === currentIndex ? 'banner-slide--active' : ''}`}
-              >
-                <img
-                  src={item.image}
-                  alt={item.name || `Campus Banner ${index + 1}`}
-                  className="banner-slide__img"
-                />
-                {/* <div className="banner-slide__overlay">
-                  {item.name && (
-                    <div className="banner-slide__info">
-                      <span className="banner-slide__badge">{item.talent}</span>
-                      <h3 className="banner-slide__name">{item.name}</h3>
-                      {item.score && <span className="banner-slide__score">Score: {item.score}</span>}
-                    </div>
-                  )}
-                </div> */}
-              </div>
+      <div className="banner-section__container page">
+        {/* Left Column: Heading + Campus prompt + Banner Carousel Slider */}
+        <div className="banner-section__left">
+          {/* Decorative Dot Matrix Accent matching screenshot */}
+          {/* <div className="banner-section__dots-accent" aria-hidden="true">
+            {Array.from({ length: 15 }).map((_, i) => (
+              <span key={i} className="accent-dot" />
             ))}
+          </div> */}
+
+          <div className="banner-section__title-group">
+            <h2 className="banner-section__title">
+              Leading University in <span className="title-gold">Chennai</span> - Dhanalakshmi Srinivasan University
+            </h2>
+
+            <p className="banner-section__campus">
+              <span>Find a campus near you</span>
+              <span className="banner-section__divider">|</span>
+              <MapPin size={15} className="banner-section__pin" />
+              <strong className="banner-section__campus-name">Chennai</strong>
+            </p>
           </div>
 
-          <button
-            type="button"
-            className="banner-carousel__arrow banner-carousel__arrow--next"
-            aria-label="Next banner"
-            onClick={nextSlide}
+          {/* Banner Carousel Slider */}
+          <div
+            className="banner-carousel"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
-            <ArrowRight size={18} strokeWidth={2.2} />
-          </button>
+            <button
+              type="button"
+              className="banner-carousel__arrow banner-carousel__arrow--prev"
+              aria-label="Previous banner"
+              onClick={prevSlide}
+            >
+              <ArrowLeft size={17} strokeWidth={2.4} />
+            </button>
 
-          <div className="banner-carousel__controls-bottom">
-            {/* <div className="banner-carousel__counter">
-              0{currentIndex + 1} / 0{count}
-            </div> */}
-
-            <div className="banner-carousel__dots">
-              {achievers.map((_, index) => (
-                <button
-                  key={index}
-                  type="button"
-                  className={`banner-carousel__dot ${index === currentIndex ? 'banner-carousel__dot--active' : ''}`}
-                  onClick={() => setCurrentIndex(index)}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
+            <div className="banner-carousel__slides">
+              {banners.map((item, index) => (
+                <div
+                  key={item.id}
+                  className={`banner-slide ${index === currentIndex ? 'banner-slide--active' : ''}`}
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="banner-slide__img"
+                  />
+                </div>
               ))}
             </div>
+
+            <button
+              type="button"
+              className="banner-carousel__arrow banner-carousel__arrow--next"
+              aria-label="Next banner"
+              onClick={nextSlide}
+            >
+              <ArrowRight size={17} strokeWidth={2.4} />
+            </button>
+          </div>
+
+          {/* Pagination Dots below Banner Carousel matching reference design */}
+          <div className="banner-carousel__dots">
+            {banners.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                className={`banner-carousel__dot ${index === currentIndex ? 'banner-carousel__dot--active' : ''}`}
+                onClick={() => setCurrentIndex(index)}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
 
-        {/* Admission Form Card */}
-        <AdmissionForm />
+        {/* Right Column: Admission Form Card */}
+        <div className="banner-section__right">
+          <AdmissionForm />
+        </div>
       </div>
     </section>
   )

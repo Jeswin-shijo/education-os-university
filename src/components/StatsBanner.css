@@ -1,0 +1,117 @@
+/* ── StatsBanner ───────────────────────────────── */
+.stats-banner {
+  padding: 32px 24px 48px;
+}
+
+.stats-banner__card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 280px;
+  border-radius: 24px;
+  overflow: visible;
+  padding: 48px;
+  background: linear-gradient(135deg, #555555 0%, #444444 60%, #4a4a4a 100%);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* ── Decorative background pattern ────────────── */
+.stats-banner__card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* ── Stats grid ───────────────────────────────── */
+.stats-banner__grid {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 12px;
+  width: 55%;
+}
+
+/* ── Individual stat item ─────────────────────── */
+.stats-banner__item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
+  padding: 10px 16px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Text ─────────────────────────────────────── */
+.stats-banner__value {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.stats-banner__label {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.4;
+  font-style: italic;
+}
+
+/* ── Campus image (cutout / pop-out) ──────────── */
+.stats-banner__image-wrap {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 45%;
+  height: 140%;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.stats-banner__image {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(-8px -4px 20px rgba(0, 0, 0, 0.35));
+}
+
+/* ── Responsive ───────────────────────────────── */
+@media (max-width: 1024px) {
+  .stats-banner__grid {
+    width: 70%;
+    flex-wrap: wrap;
+  }
+  .stats-banner__item {
+    flex: 1 1 calc(50% - 8px);
+  }
+}
+
+@media (max-width: 700px) {
+  .stats-banner__card {
+    flex-direction: column;
+    padding: 32px 20px;
+    min-height: auto;
+  }
+  .stats-banner__grid {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .stats-banner__item {
+    flex: 1 1 100%;
+  }
+  .stats-banner__image-wrap {
+    display: none;
+  }
+}
