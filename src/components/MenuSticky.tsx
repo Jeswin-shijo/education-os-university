@@ -12,26 +12,27 @@ export default function MenuSticky() {
   return (
     <div className="menu-sticky">
       <div className="menu-sticky__bar">
-        {/* Admissions Enquiry */}
-        <a href={`/`} className="menu-sticky__item">
-          <WhatsAppIcon size={17} />
-          Chat with us on WhatsApp
+
+        {/* WhatsApp */}
+        <a href="/" className="menu-sticky__item" aria-label="Chat with us on WhatsApp">
+          <WhatsAppIcon size={18} />
+          <span className="menu-sticky__label">Chat with us on WhatsApp</span>
         </a>
 
         <span className="menu-sticky__divider" />
 
         {/* Campus Tour */}
-        <a href="/" className="menu-sticky__item">
-          <CalendarCheck size={16} strokeWidth={2} />
-          Book Campus Tour
+        <a href="/" className="menu-sticky__item" aria-label="Book Campus Tour">
+          <CalendarCheck size={17} strokeWidth={2} />
+          <span className="menu-sticky__label">Book Campus Tour</span>
         </a>
 
         <span className="menu-sticky__divider" />
 
         {/* Download Brochure */}
-        <a href="/" className="menu-sticky__item">
-          <Download size={18} strokeWidth={2.2} />
-          <span>Download Brochure</span>
+        <a href="/" className="menu-sticky__item" aria-label="Download Brochure">
+          <Download size={17} strokeWidth={2.2} />
+          <span className="menu-sticky__label">Download Brochure</span>
         </a>
 
         {/* Close */}
@@ -40,8 +41,9 @@ export default function MenuSticky() {
           className="menu-sticky__close"
           aria-label="Close sticky menu"
         >
-          <X size={18} strokeWidth={2.5} />
+          <X size={16} strokeWidth={2.5} />
         </button>
+
       </div>
     </div>
   )

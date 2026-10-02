@@ -1,19 +1,21 @@
-/* ── MenuSticky ─────────────────────────────────── */
+/* ══════════════════════════════════════
+   MENU STICKY — Floating Action Bar
+══════════════════════════════════════ */
+
+/* ── Desktop: centered pill at bottom ── */
 .menu-sticky {
   position: fixed;
-  bottom: 24px;
+  bottom: 28px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
-  width: max-content;
-  max-width: 95vw;
-  animation: stickySlideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: stickySlideUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes stickySlideUp {
   from {
     opacity: 0;
-    transform: translateX(-50%) translateY(40px);
+    transform: translateX(-50%) translateY(36px);
   }
   to {
     opacity: 1;
@@ -24,81 +26,74 @@
 .menu-sticky__bar {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 10px;
-  border-radius: 50px;
+  gap: 4px;
+  padding: 6px 8px;
+  border-radius: 999px;
   background: linear-gradient(135deg, #1a3c6e 0%, #0d2240 100%);
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.28),
+    0 8px 32px rgba(0, 0, 0, 0.3),
     0 0 0 1px rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
-  color: #fff;
+  white-space: nowrap;
 }
 
-/* ── Individual item ──────────────────────────── */
+/* ── Item ── */
 .menu-sticky__item {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 18px;
-  border-radius: 50px;
-  cursor: pointer;
-  text-decoration: none;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 999px;
   color: #fff;
-  transition: all 0.25s ease;
-  white-space: nowrap;
-  font-size: 13.5px;
+  text-decoration: none;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.015em;
+  letter-spacing: 0.01em;
+  cursor: pointer;
   position: relative;
   overflow: hidden;
+  transition: background 0.2s ease;
 }
 
-.menu-sticky__item::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50px;
-  background: rgba(255, 255, 255, 0);
-  transition: background 0.25s ease;
-}
-
-.menu-sticky__item:hover::before {
+.menu-sticky__item:hover {
   background: rgba(255, 255, 255, 0.12);
-}
-
-.menu-sticky__item:active::before {
-  background: rgba(255, 255, 255, 0.2);
 }
 
 .menu-sticky__item svg {
   flex-shrink: 0;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
 }
 
-/* ── Dividers ─────────────────────────────────── */
+/* ── Label (hidden on mobile) ── */
+.menu-sticky__label {
+  display: inline;
+  white-space: nowrap;
+}
+
+/* ── Divider ── */
 .menu-sticky__divider {
+  display: inline-block;
   width: 1px;
-  height: 24px;
+  height: 22px;
   background: rgba(255, 255, 255, 0.18);
   flex-shrink: 0;
+  margin: 0 2px;
 }
 
-/* ── Close button ─────────────────────────────── */
+/* ── Close button ── */
 .menu-sticky__close {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
-  border: none;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: transparent;
-  color: rgba(255, 255, 255, 0.65);
+  border: none;
+  color: rgba(255, 255, 255, 0.55);
   cursor: pointer;
-  transition: all 0.25s ease;
   flex-shrink: 0;
-  margin-left: 2px;
+  margin-left: 4px;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .menu-sticky__close:hover {
@@ -106,32 +101,60 @@
   color: #fff;
 }
 
-/* ── Pulse dot on Admissions ──────────────────── */
-.menu-sticky__pulse {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #4ade80;
-  box-shadow: 0 0 6px #4ade80;
-  animation: pulseDot 1.8s ease-in-out infinite;
-  flex-shrink: 0;
-}
 
-@keyframes pulseDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.6); }
-}
-
-/* ── Responsive: hide text labels on mobile ──── */
+/* ══════════════════════════════════════
+   MOBILE — Icon-only vertical stack,
+   bottom-right corner
+══════════════════════════════════════ */
 @media (max-width: 700px) {
+  /* Reposition to bottom-right, no centering */
+  .menu-sticky {
+    bottom: 100px;
+    right: 16px;
+    left: auto;
+    transform: none;
+    animation: stickySlideUpMobile 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes stickySlideUpMobile {
+    from { opacity: 0; transform: translateY(36px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Vertical stack of icon buttons */
+  .menu-sticky__bar {
+    flex-direction: column;
+    padding: 8px 6px;
+    border-radius: 20px;
+    gap: 6px;
+  }
+
+  /* Each item = round icon button */
   .menu-sticky__item {
-    padding: 10px 14px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: 50%;
+    justify-content: center;
     gap: 0;
+    background: rgba(255, 255, 255, 0.08);
   }
-  .menu-sticky__item span {
+
+  /* Hide text labels on mobile */
+  .menu-sticky__label {
     display: none;
   }
-  .menu-sticky__pulse {
+
+  /* Hide dividers in vertical layout */
+  .menu-sticky__divider {
     display: none;
+  }
+
+  /* Smaller close button */
+  .menu-sticky__close {
+    width: 36px;
+    height: 36px;
+    margin-left: 0;
+    margin-top: 2px;
   }
 }
