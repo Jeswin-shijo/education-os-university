@@ -141,7 +141,7 @@ export default function BannerSection() {
                   alt={item.name || `Campus Banner ${index + 1}`}
                   className="banner-slide__img"
                 />
-                <div className="banner-slide__overlay">
+                {/* <div className="banner-slide__overlay">
                   {item.name && (
                     <div className="banner-slide__info">
                       <span className="banner-slide__badge">{item.talent}</span>
@@ -149,7 +149,7 @@ export default function BannerSection() {
                       {item.score && <span className="banner-slide__score">Score: {item.score}</span>}
                     </div>
                   )}
-                </div>
+                </div> */}
               </div>
             ))}
           </div>
@@ -164,9 +164,9 @@ export default function BannerSection() {
           </button>
 
           <div className="banner-carousel__controls-bottom">
-            <div className="banner-carousel__counter">
+            {/* <div className="banner-carousel__counter">
               0{currentIndex + 1} / 0{count}
-            </div>
+            </div> */}
 
             <div className="banner-carousel__dots">
               {achievers.map((_, index) => (
