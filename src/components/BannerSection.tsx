@@ -33,11 +33,11 @@ function AdmissionForm() {
         <div className="admission__grid">
           <label className="field">
             <span className="field__label">
-              Parent Name <em>*</em>
+              Student Name <em>*</em>
             </span>
             <div className="field__input-wrap">
               <User size={15} className="field__icon" />
-              <input type="text" required placeholder="Parent Name*" />
+              <input type="text" required placeholder="Student Name*" />
             </div>
           </label>
 

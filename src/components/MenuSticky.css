@@ -107,29 +107,29 @@
    bottom-right corner
 ══════════════════════════════════════ */
 @media (max-width: 700px) {
-  /* Reposition to bottom-right, no centering */
+  /* Bottom center — horizontal icon-only pill */
   .menu-sticky {
-    bottom: 100px;
-    right: 16px;
-    left: auto;
-    transform: none;
+    bottom: 20px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
     animation: stickySlideUpMobile 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
   @keyframes stickySlideUpMobile {
-    from { opacity: 0; transform: translateY(36px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateX(-50%) translateY(36px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
   }
 
-  /* Vertical stack of icon buttons */
+  /* Keep horizontal row, compact padding */
   .menu-sticky__bar {
-    flex-direction: column;
-    padding: 8px 6px;
-    border-radius: 20px;
-    gap: 6px;
+    flex-direction: row;
+    padding: 6px 8px;
+    border-radius: 999px;
+    gap: 2px;
   }
 
-  /* Each item = round icon button */
+  /* Each item = round icon-only button */
   .menu-sticky__item {
     width: 44px;
     height: 44px;
@@ -140,21 +140,23 @@
     background: rgba(255, 255, 255, 0.08);
   }
 
-  /* Hide text labels on mobile */
+  /* Hide text labels */
   .menu-sticky__label {
     display: none;
   }
 
-  /* Hide dividers in vertical layout */
+  /* Show thin dividers between icon buttons */
   .menu-sticky__divider {
-    display: none;
+    display: inline-block;
+    width: 1px;
+    height: 20px;
+    margin: 0 2px;
   }
 
-  /* Smaller close button */
+  /* Close button stays same size */
   .menu-sticky__close {
     width: 36px;
     height: 36px;
-    margin-left: 0;
-    margin-top: 2px;
+    margin-left: 2px;
   }
 }
