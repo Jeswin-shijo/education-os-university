@@ -46,7 +46,7 @@ function HeroVideoSection() {
       <div className="hero-fullvideo__overlay" />
 
       {/* Animated Equalizer Sound Button ("Sound On / Sound Off") matching reference image */}
-      <button
+      {/* <button
         type="button"
         className={`hero-video__sound-btn ${muted ? 'is-muted' : 'is-active'}`}
         onClick={toggleMute}
@@ -59,7 +59,7 @@ function HeroVideoSection() {
           <span className="sound-bar bar-3" />
           <span className="sound-bar bar-4" />
         </div>
-      </button>
+      </button> */}
 
       {/* Left side text title block over full video overlay */}
       {/* <div className="hero-fullvideo__text-card">
