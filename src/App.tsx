@@ -10,7 +10,7 @@ import Infrastructure from './components/Infrastructure'
 import CampusLife from './components/CampusLife'
 import Career from './components/Career'
 import Footer from './components/Footer'
-import ChatWidget from './components/ChatWidget'
+// import ChatWidget from './components/ChatWidget'
 import MenuSticky from './components/MenuSticky'
 
 export default function App() {
@@ -31,7 +31,7 @@ export default function App() {
       </main>
       <Footer />
       <MenuSticky />
-      <ChatWidget />
+      {/* <ChatWidget /> */}
     </>
   )
 }

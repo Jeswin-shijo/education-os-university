@@ -301,7 +301,7 @@ export const footer = {
   phones: ['+91 70944 58021', '+91 70944 58022'],
 }
 
-export const chatWidget = {
-  message: 'Have questions? Chat with our Admissions Desk!',
-}
+// export const chatWidget = {
+//   message: 'Have questions? Chat with our Admissions Desk!',
+// }
 

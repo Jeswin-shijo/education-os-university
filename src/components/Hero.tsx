@@ -1,24 +1,23 @@
-import { useState, useEffect } from 'react'
 import campusVideo from '../assets/images/video.mp4'
 import { stats } from '../data/siteData'
 import './Hero.css'
 
-const videoHighlights = [
-  'SELF-SELECTION OF SUBJECTS',
-  'CHOICE BASED CREDIT SYSTEM',
-  'INDUSTRY-ALIGNED CURRICULUM',
-  'WORLD-CLASS INFRASTRUCTURE',
-]
+// const videoHighlights = [
+//   'SELF-SELECTION OF SUBJECTS',
+//   'CHOICE BASED CREDIT SYSTEM',
+//   'INDUSTRY-ALIGNED CURRICULUM',
+//   'WORLD-CLASS INFRASTRUCTURE',
+// ]
 
 function HeroVideoSection() {
-  const [highlightIndex, setHighlightIndex] = useState(0)
+  // const [highlightIndex, setHighlightIndex] = useState(0)
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setHighlightIndex((prev) => (prev + 1) % videoHighlights.length)
-    }, 4000)
-    return () => clearInterval(timer)
-  }, [])
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setHighlightIndex((prev) => (prev + 1) % videoHighlights.length)
+  //   }, 4000)
+  //   return () => clearInterval(timer)
+  // }, [])
 
   return (
     <section className="hero-fullvideo">
@@ -36,9 +35,7 @@ function HeroVideoSection() {
       <div className="hero-fullvideo__overlay" />
 
       {/* Bottom Right Rotating Tag */}
-      <div className="hero-fullvideo__tag">
-        <span>{videoHighlights[highlightIndex]}</span>
-      </div>
+      
     </section>
   )
 }
